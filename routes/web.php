@@ -32,6 +32,9 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middl
 Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth');
 Route::post('/profile/update', [UserController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
 Route::post('/profile/change-password', [UserController::class, 'changePassword'])->name('profile.change-password')->middleware('auth');
+Route::get('/profile/edit', [UserController::class, 'editProfile'])->name('profile.edit')->middleware('auth');
+Route::get('/profile/change-password', [UserController::class, 'changePasswordForm'])->name('profile.change-password-form')->middleware('auth');
+
 
 //Route For LoginController
 Route::get('/login', [LoginController::class, 'login'])->name('login')->middleware('guest');

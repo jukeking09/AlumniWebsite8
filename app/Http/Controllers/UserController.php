@@ -25,47 +25,64 @@ class UserController extends Controller
         return view('users.dashboard');
     }
 
-    public function profile()
+    public function editProfile()
     {
-        return view('users.profile');
+        return view('users.edit', [
+            'user' => User::findOrFail(Auth::id()),
+            'titles' => DB::table('titles')->pluck('title', 'id'),
+            'countryCodes' => DB::table('country_codes')->pluck('code', 'id'),
+            'courses' => DB::table('courses')->pluck('course_name', 'id'),
+            'departments' => DB::table('departments')->pluck('department_name', 'id'),
+        ]);
+    }
+    public function changePasswordForm()
+    {
+        return view('users.changepassword');
     }
 
     public function updateProfile(Request $request)
     {
-        $user = Auth::user();
-        $user->first_name = $request->input('first_name');
-        $user->last_name = $request->input('last_name');
-        $user->email = $request->input('email');
-        $user->phone_number = $request->input('phone_number');
-        $user->country_code = $request->input('country_code');
-        $user->address = $request->input('address');
-        $user->designation = $request->input('designation');
-        $user->department_id = $request->input('department_id');
-        $user->course_id = $request->input('course_id');
-        $user->title_id = $request->input('title_id');
-        $user->save();
+        $user = User::findOrFail(Auth::id());
+        $data = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:15',
+            'address' => 'nullable|string|max:255',
+            'designation' => 'nullable|string|max:255',
+            'department_id' => 'nullable|exists:departments,id',
+            'course_id' => 'nullable|exists:courses,id',
+            'title_id' => 'nullable|exists:titles,id',
+            'country_code_id' => 'nullable|exists:country_codes,id',
+            'area_of_interest' => 'nullable|string|max:255',
+            'year_of_passing' => 'nullable|integer|min:1900|max:' . date('Y'),
+        ]);
+
+        $year = $user->year_of_passing;
+        $customId = "SACSAA/" . $year . "/" . $user->id;
+        $user->custom_id = $customId;
+        $user->update($data);
 
         return redirect()->back()->with('success', 'Profile updated successfully.');
     }
 
+
     public function changePassword(Request $request)
     {
-        $user = Auth::user();
-        $currentPassword = $request->input('current_password');
-        $newPassword = $request->input('new_password');
-        if($currentPassword == DB::table('users')->where('id', $user->id)->value('password')){
-            if (Hash::check($currentPassword, $user->password)) {
-                $user->password = Hash::make($newPassword);
-                $user->save();
+        $user = User::findOrFail(Auth::id());
 
-                return redirect()->back()->with('success', 'Password changed successfully.');
-            } else {
-                return redirect()->back()->with('error', 'Current password is incorrect.');
-            }
-        }
-        else{
+        $request->validate([
+            'current_password' => 'required|string',
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if (!Hash::check($request->input('current_password'), $user->password)) {
             return redirect()->back()->with('error', 'Current password is incorrect.');
         }
+
+        $user->password = Hash::make($request->input('new_password'));
+        $user->save();
+
+        return redirect()->back()->with('success', 'Password changed successfully.');
     }
 
 }

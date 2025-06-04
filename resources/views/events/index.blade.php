@@ -19,36 +19,41 @@
     @include('fragments.topbar')
     @include('fragments.navbar')
 
-    <div class="container mt-5">
-        <h1 class="mb-4">Events</h1>
-
-        @if($events->isEmpty())
-            <div class="alert alert-info">No events found.</div>
-        @else
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                @foreach($events as $event)
-                    <div class="col">
-                        <a href="{{ route('events.show', $event->id) }}" class="text-decoration-none text-dark">
-                            <div class="card event-card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $event->event_name }}</h5>
-                                    <p class="card-text text-truncate">{{ $event->event_description }}</p>
-                                    <p class="card-text">
-                                        <small class="text-muted">
-                                            {{ \Carbon\Carbon::parse($event->event_date)->format('F j, Y') }}
-                                            @if($event->event_time)
-                                                | {{ \Carbon\Carbon::parse($event->event_time)->format('g:i A') }}
-                                            @endif
-                                        </small>
-                                    </p>
-                                </div>
+    <div class="container py-5">
+    <div class="text-center mb-4">
+            <h1 class="h3">Events</h1>
+        </div>
+    @if($events->isEmpty())
+        <div class="alert alert-info text-center">No events found.</div>
+    @else
+        <div class="row">
+            @foreach($events as $event)
+                <div class="col-md-6 mb-4">
+                    <a href="{{ route('events.show', $event->id) }}" class="text-decoration-none">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary fw-bold">{{ $event->event_name }}</h5>
+                                <p class="card-text text-dark">{{ $event->event_description }}</p>
+                                <p class="card-text">
+                                    <small class="text-secondary">
+                                        {{ \Carbon\Carbon::parse($event->event_date)->format('F j, Y') }}
+                                        @if($event->event_time)
+                                            | {{ \Carbon\Carbon::parse($event->event_time)->format('g:i A') }}
+                                        @endif
+                                    </small>
+                                </p>
                             </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-        @endif
-    </div>
+                            <div class="card-footer bg-white border-0 text-center">
+                                <button class="btn btn-outline-primary btn-sm">View Details</button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    @endif
+</div>
+    @include('fragments.footer')
+    @include('imports.footimport')
 </body>
 </html>
-@include('fragments.footer')

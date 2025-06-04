@@ -79,10 +79,12 @@
 
         <!-- Left Section: Main Content -->
         <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center position-relative">
-            <h1 class="display-1 text-white text-uppercase mb-4">Anthonys is calling you</h1>
+            <h1 class="display-4 text-white text-uppercase mb-4 ps-5">Anthonys is calling you</h1>
+            <h1 class="display-4 text-white mb-4 ps-5"><em>Bring Alive Memories</em></h1>
             @guest
-                <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5 py-3">Join Us</a>
+                <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5 py-3 my-5">Join</a>
             @endguest
+            <h1 class="display-4 text-white text-uppercase mb-4 mt-5 ps-5">To Make A Difference</h1>
         </div>
 
         <!-- Right Section: Sticky Stats -->
@@ -122,10 +124,12 @@
 
         <!-- Left Section: Main Content -->
         <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center position-relative">
-            <h1 class="display-1 text-white text-uppercase mb-4">Anthonys is calling you</h1>
+            <h1 class="display-6 text-white text-uppercase mb-2 ps-5">Anthonys is calling you</h1>
+            <h1 class="display-6 text-white mb-4 ps-5"><em>Bring Alive Memories</em></h1>
             @guest
-                <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5 py-3">Join Us</a>
+                <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5 py-3 my-3">Join</a>
             @endguest
+            <h1 class="display-6 text-white text-uppercase mb-4 mt-2 ps-5">To Make A Difference</h1>
         </div>
 
         <!-- Right Section: Sticky Stats -->
@@ -257,7 +261,6 @@
                 </table>
             </div>
         
-        
       <!-- End Section Title -->
     </section>
     <!-- /About Section -->
@@ -301,165 +304,8 @@
         </div>
     </section>
 <div class="container">
-     <!-- Carousel --><h2 class="text-center">Prominent Alumni</h2>
-{{-- <div id="demo" class="carousel slide" data-bs-ride="carousel">
-  <!-- The slideshow/carousel -->
-  <div class="carousel-inner text-center">
-    <div class="carousel-item active">
-      <figure class="text-center">
-            <img src="img/Prominent Alumni/pasangma.jpg" alt="(L) Shri. P A Sangma" class="img-fluid rounded">
-            <figcaption class="mt-2 text-bold small">
-                (L) Shri. P A Sangma, Former Lok Sabha Speaker, Chief Minister
-             /figcaption>
-       </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/djala.jpg" alt="(L) Arch Bishop Dominic Jala" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            (L) Arch Bishop Dominic Jala, former Arch Bishop of Shillong
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/cknongrum.jpg" alt="(L) Capt. Clifford K Nongrum" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            (L) Capt. Clifford K Nongrum, Maha Vir Chakra
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-         <figure class="text-center">
-                        <img src="img/Prominent Alumni/manlun.jpg" alt="(L). Major David Manlun" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            (L). Major David Manlun, Kirti Chakra
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/Lumpem Vashum.jpeg" alt="Lumpem Vashum" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            Lumpem Vashum, All India 53 Rank, IIS
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/ekmawlong.png" alt="(L) Shri. E K Mawlong" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            (L) Shri. E K Mawlong, Former Chief Minister of Meghalaya
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/serto.jpg" alt="Justice Songkhupchung Serto" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            Justice Songkhupchung Serto, High Court Judge
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/Bhattacharyya.png" alt="Dr. Pushpak Bhattacharyya" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            Dr. Pushpak Bhattacharyya, called as the Godfather of NLP in India
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/Nambie Jessica Marak.jpg" alt="Nambie Jessica Marak" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            Nambie Jessica Marak, Runner-Up MasterChef India Season 8 
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/Fr Stephen Mavely.png" alt="Fr Stephen Mavely sdb" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            Fr Stephen Mavely sdb, Ph D, Founding VC of Don Bosco University
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/Mooshahary.jpg" alt="Shri. R S Mooshahary" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            Shri. R S Mooshahary, Former Governor of Meghalaya
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-         <figure class="text-center">
-                        <img src="img/Prominent Alumni/Sturgeon.jpg" alt="Brig. William Sturgeon" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            Brig. William Sturgeon
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/Sesino Yhoshu.jpg" alt="Sesino Yhoshu" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            Sesino Yhoshu, Film Maker- National Award Winner
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/ddl.jpg" alt="Dr. D D Lapang" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            Dr. D D Lapang, former Chief Minister of Meghalaya
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/mukul.webp" alt="Dr Mukul Sangma" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            Dr Mukul Sangma, Former Cheif Minister of Meghalaya
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/rpdiengdoh.jpg" alt="(L) Shri. Raymond P Diengdoh" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            (L) Shri. Raymond P Diengdoh MPS, Ashok Chakra
-                        </figcaption>
-                    </figure>
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/RiahTaipodia.jpeg" alt="Riah Taipodia, International Film Award Winner" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            Riah Taipodia, International Film Award Winner
-                        </figcaption>
-                    </figure>
-      
-    </div>
-    <div class="carousel-item">
-        <figure class="text-center">
-                        <img src="img/Prominent Alumni/RidalangMaryTariang.HEIC" alt="Ridalang Mary Tariang, Entrepreneur, Co-founder, Hills festival Meghalaya" class="img-fluid rounded">
-                        <figcaption class="mt-2 text-bold small">
-                            Ridalang Mary Tariang, Entrepreneur, Co-founder, Hills festival Meghalaya
-                        </figcaption>
-                    </figure>
-    </div>
-  </div>
+     <h2 class="text-center">Prominent Alumni</h2>
 
-  <!-- Left and right controls/icons -->
-  <button class="carousel-control-prev text-dark" type="button" data-bs-target="#demo" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon text-dark">Previous</span>
-  </button>
-  <button class="carousel-control-next text-dark" type="button" data-bs-target="#demo" data-bs-slide="next">
-    <span class="carousel-control-next-icon text-dark">Next</span>
-  </button>
-</div> --}}
 <!-- Swiper -->
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">

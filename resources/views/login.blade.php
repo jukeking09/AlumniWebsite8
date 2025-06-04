@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login</title>
+    <style>
+        .register a {
+            color:var(--bs-green)!important;
+        }
+    </style>
     @include('imports.headimport')
 </head>
 <body>
@@ -60,7 +65,7 @@
             <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
 
-        <p class="mt-3 text-center">
+        <p class="mt-3 text-center fw-bold register">
             Don't have an account? 
             <a href="{{ route('register') }}">Register here</a>
         </p>

@@ -6,7 +6,7 @@
     <title>A4 Quadrant Layout</title>
     <style>
         @page {
-            size: A4;
+            size: A3;
             margin: 0; /* Remove any default margins */
         }
 
@@ -18,8 +18,8 @@
 
         .a4-container {
             position: relative;
-            width: 210mm; /* A4 width */
-            height: 297mm; /* A4 height */
+            width: 180mm; /* A4 width */
+            height: 240mm; /* A4 height */
             box-sizing: border-box;
             border: 1px solid black;
             overflow: hidden; /* Prevent content overflow */
@@ -31,7 +31,7 @@
             top: 0;
             bottom: 0;
             left: 50%;
-            border-left: 1px solid black;
+            border-left: 2px dotted black;
         }
 
         .horizontal-line {
@@ -39,7 +39,7 @@
             left: 0;
             right: 0;
             top: 50%;
-            border-top: 1px solid black;
+            border-top: 1px dotted black;
         }
 
         /* Quadrants */
@@ -74,13 +74,13 @@
         }
 
         .front {
-        margin-left: 30px;
+        margin-left: 20px;
         margin-top: -15px;
         background-color: #f0f8ff;
-        transform: rotate(270deg); /* Rotate the content */
+        transform: rotate(270deg); Rotate the content
         transform-origin: center center; /* Rotate around the center */
-        width: 140%!important; /* Ensure it spans the full width of the quadrant */
-        height: 100%!important; /* Ensure it spans the full height of the quadrant */
+        width: 130%!important; 
+        /* height: 100%!important; Ensure it spans the full height of the quadrant */
         display: flex; /* For centering content */
         justify-content: center;
         align-items: center;
@@ -89,12 +89,11 @@
 
         .back {
           z-index: 999;
-            margin-right: 200px;
             background-color: #f0f8ff;
-            transform: rotate(90deg); /* Rotate the content */
+            transform: rotate(90deg); Rotate the content
             transform-origin: center center; /* Rotate around the center */
-            width: 140%!important; 
-            height: 100%!important; /* Ensure it spans the full height of the quadrant */
+            width: 210%!important;
+            height: 160%!important;
             display: flex; /* For centering content */
             justify-content: center;
             align-items: flex-end;
@@ -102,9 +101,9 @@
         }
 
         .back section{
-          /* margin-left:100px;  */
-          margin-bottom: 1000px; 
-           /* margin-top:200px;  */
+            padding-top: 300px; 
+            padding-right: 250px;
+            padding-bottom: 200px;
         }
 
         .instructions{
@@ -174,18 +173,24 @@
             text-align: center;
         }
         #left-image-cell {
+            vertical-align: text-top;
+            text-align: center;
             /* padding-right: 35px; */
         }
         #right-image-cell {
+            vertical-align: text-top;
+            text-align: center;
             /* padding-left: 15px; */
         }
         #left-image {
-            width: 100px;
+            width: 40px;
         }
         #right-image {
-            width: 100px;
+            width: 50px;
         }
         #frontmain {
+            padding: 0;
+            margin: 0;
             text-align: center;
         }
         .firstline {
@@ -214,9 +219,18 @@
         .photo-cell img {
             width: 40px;
         }
+        
         img {
             max-width: 100%;
             height: auto;
+        }
+        .userphoto{
+            width: 80px!important;
+            height: 80px!important;
+        }
+        .seal-img{
+            width: 60px!important;
+            height: 60px!important;
         }
         .text-center {
             text-align: center;
@@ -239,66 +253,66 @@
                 <p>This content is in quadrant 3.</p> --}}
                 <div class="my-5" id="frontpage">
             <div id="header">
-                <table class="" style="width: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                <table class="" style="width: 100%; border-collapse: collapse; margin: 0; padding: 0; ">
     <tr>
         <!-- Left Image -->
-        <td rowspan="5" id="left-image-cell" style="padding: 0; margin: 0;">
-            <img src="./img/leadsandprotects.jpg" alt="Don Bosco" id="left-image">
+        <td rowspan="5" id="left-image-cell" style="padding: 0; margin-left: 20px;width: 3%;">
+            <img src="./img/leadsandprotects.png" alt="Don Bosco" id="left-image">
         </td>
         <!-- First Heading -->
-        <td style="text-align: center; padding: 0; margin: 0;">
-            <h2 style="margin: 0; padding: 0;">ST. ANTHONY’S COLLEGE SHILLONG ALUMNI ASSOCIATION</h2>
+        <td style="text-align: center; padding: 0; margin: 0;width: 15%;">
+            <h4 style="margin: 0; padding: 0;">ST. ANTHONY’S COLLEGE SHILLONG ALUMNI ASSOCIATION</h4>
         </td>
         <!-- Right Image -->
-        <td rowspan="5" id="right-image-cell" style="padding: 0; margin: 0;">
+        <td rowspan="5" id="right-image-cell" style="padding: 0; margin-right: 20px;width: 3%;">
             <img id="right-image" src="./img/sacsaa.png" alt="Don Bosco">
         </td>
     </tr>
     <tr>
         <!-- Second Heading -->
-        <td style="text-align: center; padding: 0; margin: 0;">
-            <h3 style="margin: 0; padding: 0;">(Affiliated to the Association of the Past Pupils of Don Bosco)</h3>
+        <td style="text-align: center; padding: 0; margin: 0;width: 15%;">
+            <h5 style="margin: 0; padding-top: 5px;">(Affiliated to the Association of the Past Pupils of Don Bosco)</h5>
         </td>
     </tr>
     <tr>
         <!-- Third Heading -->
-        <td style="text-align: center; padding: 0; margin: 0;">
-            <h4 style="margin: 0; padding: 0;">St. Anthony’s College, Shillong</h4>
+        <td style="text-align: center; padding: 0; margin: 0;width: 15%;">
+            <h5 style="margin: 0; padding-top: 5px;">St. Anthony’s College, Shillong</h5>
         </td>
     </tr>
     <tr>
         <!-- Fourth Heading -->
-        <td style="text-align: center; padding: 0; margin: 0;">
-            <h4 style="margin: 0; padding: 0;">793 001 – Meghalaya, India</h4>
+        <td style="text-align: center; padding: 0; margin: 0;width: 15%;">
+            <h5 style="margin: 0; padding-top: 5px;">793 001 – Meghalaya, India</h5>
         </td>
     </tr>
 </table>
   </div>
             <div id="frontmain">
-                <h4>LIFETIME MEMBERSHIP CARD</h4>
+                <h5>LIFETIME MEMBERSHIP CARD</h5>
                 <div class="details-table">
     <table style="width: 100%; border-collapse: collapse; margin: 0; padding: 0;">
         <!-- Row 1: Name and ID -->
         <tr>
-            <td style="text-align: left; padding: 0; margin: 0; width: 50%;">
-                <h5 style="margin: 0; padding-left: 10px;">Name: {{ $user->first_name }}  {{ $user->last_name }}</h5>
+            <td style="text-align: left; padding-left: 20px; margin: 0; width: 50%;">
+                <h6 style="margin: 0; padding-left: 10px;">Name: {{ $user->first_name }}  {{ $user->last_name }}</h6>
             </td>
-            <td style="text-align: right; padding-right: 10px; margin: 0; width: 50%;">
-                <h5 style="margin: 0; padding: 0;">ID NO: {{ $user->custom_id }}</h5>
+            <td style="text-align: right; padding-right: 20px; margin: 0; width: 50%;">
+                <h6 style="margin: 0; padding-right: 20px;">ID NO: {{ $user->custom_id }}</h6>
             </td>
         </tr>
         
         <!-- Row 2: Department -->
         <tr>
-            <td colspan="2" style="text-align: left; padding: 0; margin: 0;">
-                <h5 style="margin: 0; padding-left: 10px;">Department: {{ $user->department->department_name }}</h5>
+            <td colspan="2" style="text-align: left; padding-left: 20px; margin: 0;">
+                <h6 style="margin: 0; padding-left: 10px;">Department: {{ $user->department->department_name }}</h6>
             </td>
         </tr>
 
         <!-- Row 3: Year of Passing -->
         <tr>
-            <td colspan="2" style="text-align: left; padding: 0; margin: 0;">
-                <h5 style="margin: 0; padding-left: 10px;">Year Of Passing: {{$user->year_of_passing}}</h5>
+            <td colspan="2" style="text-align: left; padding-left: 20px; margin: 0;">
+                <h6 style="margin: 0; padding-left: 10px;">Year Of Passing: {{$user->year_of_passing}}</h6>
             </td>
         </tr>
     </table>
@@ -306,26 +320,26 @@
                 <div id="bottommain">
                     <table style="width: 100%; border-collapse: collapse; margin: 0; padding: 0;">
                         <tr>
-                            <td style="text-align: left; padding-left: 10px; margin: 0; width: 33%;"><img src="img/Signature - PRES.jpg" alt="President Signature"></td>
-                            <td style="text-align: left; padding: 0; margin: 0; width: 33%;" rowspan="3" class="seal-cell">
-                                <img src="img/Signature - PRES.jpg" alt="Seal">
+                            <td style="text-align: left; padding-left: 40px; margin: 0; width: 33%;"><img src="./img/SignaturePRES.png" alt="President Signature"></td>
+                            <td style="text-align: left; padding: 0; margin: 0; width: 33%;" rowspan="6" class="seal-cell">
+                                <img src="./img/seal.png" class="seal-img" alt="Seal">
                             </td>
-                            <td style="text-align: center; padding: 0; margin: 0; width: 33%;"rowspan="3" class="photo-cell">
-                                 @if ($profilePicturePath && file_exists($profilePicturePath))
-                                    <img src="file://{{ $profilePicturePath }}" alt="User Photo">
+                            <td style="text-align: center; padding: 0; margin: 0; width: 33%;"rowspan="6" class="photo-cell">
+                                  @if ($profilePicturePath && file_exists($profilePicturePath))
+                                    <img class="userphoto" src="file://{{ $profilePicturePath }}" alt="User Photo">
                                 @else
                                     <p>No photo available</p>
-                                @endif
+                                 @endif 
                             </td>
                         </tr>
                         <tr>
                             <td style="padding: 0; margin: 0; width: 50%;"></td>
                         </tr>
                         <tr>
-                            <td style="text-align: left; padding-left: 10px; margin: 0; width: 50%;">President</td>
+                            <td style="text-align: left; padding-left: 20px; margin: 0; width: 50%;"><h6 style="margin: 0; padding-left: 10px;">President</h6></td>
                         </tr>
                         <tr>
-                            <td style="text-align: left; padding-left: 10px; margin: 0; width: 50%;">SACSAA</td>
+                            <td style="text-align: left; padding-left: 20px; margin: 0; width: 50%;"><h6 style="margin: 0; padding-left: 10px;">SACSAA</h6></td>
                         </tr>
                     </table>
                 </div>
@@ -336,13 +350,17 @@
         <div class="quadrant q2">
             <div class="back">
               <section>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br>
                 <h5>Address:{{$user->address}}</h5>
+                {{-- <h5>Address:dasdasdasdasdasd</h5>
+                <h5>Address:dasdasdasdasdasd</h5>
+                <h5>Address:dasdasdasdasdasd</h5>
+                <h5>Address:dasdasdasdasdasd</h5> --}}
               </section>
             </div>
         </div>
         <div class="quadrant q3">
-            <div class="instructions">
+            {{-- <div class="instructions">
                 <h3>Instructions</h3>
                 <ol>
                     <ul>Fold in Half</ul>
@@ -350,7 +368,7 @@
                     <ul>Gluestick</ul>
                     <ul>Tada</ul>
                 </ol>
-            </div>
+            </div> --}}
         </div>
         <div class="quadrant q4">
         </div>

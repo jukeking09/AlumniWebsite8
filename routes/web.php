@@ -66,6 +66,10 @@ Route::get('/articles/image/{filename}', [ArticleController::class, 'showImage']
 
 //Route For MemberController
 Route::get('/dashboard', [MemberController::class, 'dashboard'])->name('member.dashboard')->middleware('auth','role:member');
+Route::get('/memberprofile/edit', [MemberController::class, 'editProfile'])->name('member.profile.edit')->middleware('auth','role:member');
+Route::post('/memberprofile/update', [MemberController::class, 'updateProfile'])->name('member.profile.update')->middleware('auth','role:member');
+Route::get('/memberprofile/change-password', [MemberController::class, 'changePasswordForm'])->name('member.profile.change-password')->middleware('auth','role:member');
+Route::post('/memberprofile/change-password', [MemberController::class, 'changePassword'])->name('member.profile.change-password.store')->middleware('auth','role:member');
 
 //Route For EventController
 Route::get('/events', [EventController::class, 'index'])->name('events');

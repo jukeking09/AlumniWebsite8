@@ -3,8 +3,8 @@
             <div class="d-flex align-items-center">
                     <div class="logo mt-3 me-2">
                         <figure class="text-center">
-                            <a href="img/sacsaa.png" target="_blank" rel="noopener noreferrer">
-                                <img src="img/sacsaa.png" alt="SACSAA Logo" class="img-fluid rounded" style="max-width: 100px; height: auto;">
+                            <a href="/img/sacsaa.png" target="_blank" rel="noopener noreferrer">
+                                <img src="/img/sacsaa.png" alt="SACSAA Logo" class="img-fluid rounded" style="max-width: 100px; height: auto;">
                             </a>
                         </figure>
                     </div>

@@ -37,6 +37,9 @@
                                 @if(auth()->check() && auth()->user()->role->role_name === 'user')
                                     <a href="{{ route('users-dashboard') }}" class="dropdown-item">Dashboard</a>
                                 @endif
+                                @if(auth()->check() && auth()->user()->role->role_name === 'admin')
+                                    <a href="{{ route('admin.dashboard') }}" class="dropdown-item">Dashboard</a>
+                                @endif
                                 <a href="{{ route('profile.edit') }}" class="dropdown-item">Edit Profile</a>
                                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                     @csrf

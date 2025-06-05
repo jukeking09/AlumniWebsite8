@@ -95,36 +95,39 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 
     Route::get('/titles', [AdminController::class, 'titles'])->name('titles.index');
     Route::post('/titles', [AdminController::class, 'storeTitle'])->name('titles.store');
-    Route::delete('/titles/{id}', [AdminController::class, 'destroyTitle'])->name('titles.destroy');
+    Route::put('/titles/{id}', [AdminController::class, 'updateTitle'])->name('titles.update');
 
     Route::get('/country-codes', [AdminController::class, 'countryCodes'])->name('country_codes.index');
     Route::post('/country-codes', [AdminController::class, 'storeCountryCode'])->name('country_codes.store');
-    Route::delete('/country-codes/{id}', [AdminController::class, 'destroyCountryCode'])->name('country_codes.destroy');
+    Route::put('/country-codes/{id}', [AdminController::class, 'updateCountryCode'])->name('country_codes.update');
 
     Route::get('/courses', [AdminController::class, 'courses'])->name('courses.index');
     Route::post('/courses', [AdminController::class, 'storeCourse'])->name('courses.store');
-    Route::delete('/courses/{id}', [AdminController::class, 'destroyCourse'])->name('courses.destroy');
+    Route::put('/courses/{id}', [AdminController::class, 'updateCourse'])->name('courses.update');
 
     Route::get('/departments', [AdminController::class, 'departments'])->name('departments.index');
     Route::post('/departments', [AdminController::class, 'storeDepartment'])->name('departments.store');
-    Route::delete('/departments/{id}', [AdminController::class, 'destroyDepartment'])->name('departments.destroy');
+    Route::put('/departments/{id}', [AdminController::class, 'updateDepartment'])->name('departments.update');
 
     Route::get('/roles', [AdminController::class, 'roles'])->name('roles.index');
     Route::post('/roles', [AdminController::class, 'storeRole'])->name('roles.store');
-    Route::delete('/roles/{id}', [AdminController::class, 'destroyRole'])->name('roles.destroy');
+    Route::put('/roles/{id}', [AdminController::class, 'updateRole'])->name('roles.update');
 
     Route::get('/prominent-alumni/create', [AdminController::class, 'alumnis'])->name('prominent_alumni.create');
-    Route::post('/prominent-alumni', [AdminController::class, 'storeAlumni'])->name('prominent_alumni.store');;
-
+    Route::post('/prominent-alumni', [AdminController::class, 'storeAlumni'])->name('prominent_alumni.store');  
+    Route::put('/prominent-alumni/{id}', [AdminController::class, 'updateAlumni'])->name('prominent_alumni.update');
+    Route::get('/prominent-alumni/image/{filename}', [AdminController::class, 'showImage'])->name('prominent_alumni.image');
     // User management
     Route::get('/users', [AdminController::class, 'users'])->name('users.index');
     Route::put('/users/{id}/role', [AdminController::class, 'updateUserRole'])->name('users.updateRole');
-    Route::delete('/users/{id}', [AdminController::class, 'destroyUser'])->name('users.destroy');
-
+    
     // Executive Members management
     Route::get('/executive-members', [AdminController::class, 'executiveMembers'])->name('executive_members.index');
     Route::post('/executive-members', [AdminController::class, 'storeExecutiveMember'])->name('executive_members.store');
+    Route::put('/executive-members/{id}', [AdminController::class, 'updateExecutiveMember'])->name('executive_members.update');
     Route::get('/executive-members/image/{filename}', [AdminController::class, 'showExecutiveMemberImage'])->name('executive_members.image');
+    Route::post('/executive-members/{id}/disable', [AdminController::class, 'disableExecutiveMember'])->name('executive_members.disable');
+    Route::post('/executive-members/{id}/enable', [AdminController::class, 'enableExecutiveMember'])->name('executive_members.enable');
 });
 
 Route::get('/generate-id-card/{id}', [IDCardController::class, 'generateIdCard'])->name('generateIdCard')->middleware('auth');

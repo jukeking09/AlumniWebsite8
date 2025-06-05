@@ -22,7 +22,6 @@
                     <th>Email</th>
                     <th>Role</th>
                     <th>Change Role</th>
-                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,13 +41,6 @@
                                 @endforeach
                             </select>
                             <button type="submit" class="btn btn-primary btn-sm">Update</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
                     </td>
                 </tr>

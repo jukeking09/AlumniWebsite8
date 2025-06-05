@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\ProminentAlumnus;
 use App\Models\User;
 use App\Models\ExecutiveMember;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -39,11 +41,19 @@ class AdminController extends Controller
 
         return redirect()->route('admin.titles.index')->with('success', 'Title added successfully.');
     }
-
-    public function destroyTitle($id)
+  
+    public function updateTitle(Request $request, $id)
     {
-        Title::findOrFail($id)->delete();
-        return redirect()->route('admin.titles.index')->with('success', 'Title deleted.');
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:255'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $title = Title::findOrFail($id);
+        $title->update(['title' => $request->title]);
+
+        return redirect()->route('admin.titles.index')->with('success', 'Title updated successfully.');
     }
 
     public function countryCodes()
@@ -65,11 +75,19 @@ class AdminController extends Controller
 
         return redirect()->route('admin.country_codes.index')->with('success', 'Country code added successfully.');
     }
-
-    public function destroyCountryCode($id)
+    public function updateCountryCode(Request $request, $id)
     {
-        CountryCode::findOrFail($id)->delete();
-        return redirect()->route('admin.country_codes.index')->with('success', 'Country code deleted.');
+        $validator = Validator::make($request->all(), [
+            'code' => 'required|string|max:10',
+            'country_name' => 'required|string|max:255'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $countryCode = CountryCode::findOrFail($id);
+        $countryCode->update($request->only('code', 'country_name'));
+
+        return redirect()->route('admin.country_codes.index')->with('success', 'Country code updated successfully.');
     }
 
     public function courses()
@@ -91,10 +109,18 @@ class AdminController extends Controller
         return redirect()->route('admin.courses.index')->with('success', 'Course added successfully.');
     }
 
-    public function destroyCourse($id)
+    public function updateCourse(Request $request, $id)
     {
-        Course::findOrFail($id)->delete();
-        return redirect()->route('admin.courses.index')->with('success', 'Course deleted.');
+        $validator = Validator::make($request->all(), [
+            'course_name' => 'required|string|max:255'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $course = Course::findOrFail($id);
+        $course->update(['course_name' => $request->course_name]);
+
+        return redirect()->route('admin.courses.index')->with('success', 'Course updated successfully.');
     }
 
     public function departments()
@@ -116,12 +142,19 @@ class AdminController extends Controller
         return redirect()->route('admin.departments.index')->with('success', 'Department added successfully.');
     }
 
-    public function destroyDepartment($id)
+    public function updateDepartment(Request $request, $id)
     {
-        Department::findOrFail($id)->delete();
-        return redirect()->route('admin.departments.index')->with('success', 'Department deleted.');
-    }
+        $validator = Validator::make($request->all(), [
+            'department_name' => 'required|string|max:255'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $department = Department::findOrFail($id);
+        $department->update(['department_name' => $request->department_name]);
 
+        return redirect()->route('admin.departments.index')->with('success', 'Department updated successfully.');
+    }
     public function roles()
     {
         $roles = Role::all();
@@ -141,14 +174,23 @@ class AdminController extends Controller
         return redirect()->route('admin.roles.index')->with('success', 'Role added successfully.');
     }
 
-    public function destroyRole($id)
+    public function updateRole(Request $request, $id)
     {
-        Role::findOrFail($id)->delete();
-        return redirect()->route('admin.roles.index')->with('success', 'Role deleted.');
+        $validator = Validator::make($request->all(), [
+            'role_name' => 'required|string|max:255'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $role = Role::findOrFail($id);
+        $role->update(['role_name' => $request->role_name]);
+
+        return redirect()->route('admin.roles.index')->with('success', 'Role updated successfully.');
     }
      public function alumnis()
     {
-        return view('admin.addprominentalumni');
+        $prominentalumni = ProminentAlumnus::all();
+        return view('admin.addprominentalumni', compact('prominentalumni'));
     }
 
     public function storeAlumni(Request $request)
@@ -169,6 +211,32 @@ class AdminController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Alumnus added successfully!');
+    }
+
+    public function updateAlumni(Request $request, $id)
+    {
+        $request->validate([
+            'alumniname' => 'required|string|max:255',
+            'description' => 'required|string',
+            'photo' => 'nullable|mimes:jpg,png,jpeg|max:2048',
+        ]);
+
+        $alumni = ProminentAlumnus::findOrFail($id);
+        $alumni->alumniname = $request->alumniname;
+        $alumni->description = $request->description;
+
+        if ($request->hasFile('photo')) {
+            // Delete old photo if exists
+            if ($alumni->photo) {
+                Storage::disk('private')->delete($alumni->photo);
+            }
+            // Store new photo
+            $alumni->photo = $request->file('photo')->store('alumni_photos', 'private');
+        }
+
+        $alumni->save();
+
+        return redirect()->route('admin.alumnis.index')->with('success', 'Alumnus updated successfully!');
     }
 
     public function showImage($filename) {
@@ -200,13 +268,6 @@ class AdminController extends Controller
         return redirect()->route('admin.users.index')->with('success', 'User role updated successfully.');
     }
 
-    public function destroyUser($id)
-    {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
-    }
-
     public function executiveMembers()
     {
         $executiveMembers = ExecutiveMember::all();
@@ -214,7 +275,7 @@ class AdminController extends Controller
     }
 
     public function storeExecutiveMember(Request $request)
-{
+    {
     $request->validate([
         'name' => 'required|string|max:255',
         'post' => 'required|string|max:255',
@@ -232,14 +293,55 @@ class AdminController extends Controller
 
     return redirect()->route('admin.executive_members.index')
         ->with('success', 'Executive member added successfully!');
-}
-
-public function showExecutiveMemberImage($filename)
-{
-    $path = storage_path('app/private/executive_photos/' . $filename);
-    if (!file_exists($path)) {
-        abort(404);
     }
-    return response()->file($path);
-}
+
+    public function updateExecutiveMember(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'post' => 'required|string|max:255',
+            'picture' => 'nullable|mimes:jpg,jpeg,png|max:2048',
+        ]);
+        $executiveMember = ExecutiveMember::findOrFail($id);
+        $executiveMember->name = $request->name;
+        $executiveMember->post = $request->post;
+        if ($request->hasFile('picture')) {
+            // Delete old picture if exists
+            if ($executiveMember->picture) {
+                Storage::disk('private')->delete($executiveMember->picture);
+            }
+            // Store new picture
+            $executiveMember->picture = $request->file('picture')->store('executive_photos', 'private');
+        }
+        $executiveMember->save();
+        return redirect()->route('admin.executive_members.index')
+            ->with('success', 'Executive member updated successfully!');
+    }
+
+    public function disableExecutiveMember($id)
+    {
+        $executiveMember = ExecutiveMember::findOrFail($id);
+        $executiveMember->active = false; // Assuming you have an 'active' column
+        $executiveMember->save();
+        return redirect()->route('admin.executive_members.index')
+            ->with('success', 'Executive member disabled successfully!');
+    }
+    public function enableExecutiveMember($id)
+    {
+        $executiveMember = ExecutiveMember::findOrFail($id);
+        $executiveMember->active = true; // Assuming you have an 'active' column
+        $executiveMember->save();
+        return redirect()->route('admin.executive_members.index')
+            ->with('success', 'Executive member enabled successfully!');
+    }
+    public function showExecutiveMemberImage($filename)
+    {
+        $path = storage_path('app/private/executive_photos/' . $filename);
+        if (!file_exists($path)) {
+            abort(404);
+        }
+        return response()->file($path);
+    }
+
+
 }

@@ -19,6 +19,7 @@
                 <th>Name</th>
                 <th>Post</th>
                 <th>Picture</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +33,18 @@
                     @else
                         N/A
                     @endif
+                </td>
+                <td>
+                    <form action="{{ $member->active ? route('admin.executive_members.disable', $member->id) : route('admin.executive_members.enable', $member->id) }}" method="POST" style="display:inline">
+                        @csrf
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="activeSwitch{{ $member->id }}" name="active"
+                                onchange="this.form.submit()" {{ $member->active ? 'checked' : '' }}>
+                            <label class="form-check-label" for="activeSwitch{{ $member->id }}">
+                                {{ $member->active ? 'Enabled' : 'Disabled' }}
+                            </label>
+                        </div>
+                    </form>
                 </td>
             </tr>
         @endforeach

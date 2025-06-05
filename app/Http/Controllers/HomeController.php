@@ -46,7 +46,7 @@ class HomeController extends Controller
 
     public function executivebody()
     {
-        $executiveMembers = ExecutiveMember::all();
+        $executiveMembers = ExecutiveMember::where('active', true)->get();
         return view('executivebody', compact('executiveMembers'));
     }
 

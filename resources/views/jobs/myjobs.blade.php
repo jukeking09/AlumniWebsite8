@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Jobs</title>
+    <title>My Opportunities</title>
     <style>
         .list-group-item {
             border: none;
@@ -30,7 +30,7 @@
     @include('fragments.topbar')
     @include('fragments.navbar')
     <div class="container mt-5">
-        <h1 class="mb-4 text-center">My Jobs</h1>
+        <h1 class="mb-4 text-center">My Opportunities</h1>
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
@@ -60,7 +60,7 @@
             </ul>
         @else
             <div class="alert alert-info text-center mt-4">
-                <p>No jobs found.</p>
+                <p>No Opportunities posted yet!</p>
             </div>
         @endif
     </div>

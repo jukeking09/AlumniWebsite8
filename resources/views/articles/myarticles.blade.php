@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Articles</title>
+    <title>My Publications</title>
     <style>
         .list-group-item {
             background-color: #ffffff;
@@ -40,7 +40,7 @@
     @include('fragments.topbar')
     @include('fragments.navbar') --}}
     <div class="container mt-5">
-        <h1 class="text-center mb-4">My Articles</h1>
+        <h1 class="text-center mb-4">My Publications</h1>
 
         @if($articles->count())
             <div class="list-group">
@@ -64,7 +64,7 @@
             </div>
         @else
             <div class="alert alert-warning text-center" role="alert">
-                No articles found.
+                No Publications uploaded yet!.
             </div>
         @endif
     </div>

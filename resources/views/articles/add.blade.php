@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add New Article</title>
+    <title>Add Publication</title>
     <style>
         .form-control.is-invalid {
             border-color: #e3342f;
@@ -29,7 +29,7 @@
     @include('fragments.topbar')
     @include('fragments.navbar') --}}
     <div class="container mt-5">
-        <h1 class="mb-4 text-center">Add Article</h1>
+        <h1 class="mb-4 text-center">Add Publications</h1>
         <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data" class="shadow p-4 rounded bg-white">
             @csrf
          <!-- Title -->
@@ -91,7 +91,7 @@
 
             <!-- Submit Button -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary w-100">Add Article</button>
+                <button type="submit" class="btn btn-primary w-100">Add Publication</button>
             </div>
         </form>
     </div>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Articles</title>
+    <title>Publications</title>
     <style>
         .article-image{
             min-width: 200px!important;
@@ -26,7 +26,7 @@
 
      <div class="container py-5">
         <div class="text-center mb-4">
-            <h1 class="h3">Articles</h1>
+            <h1 class="h3">Publications</h1>
         </div>
 
         @if($articles->count())
@@ -53,7 +53,7 @@
             </div>
         @else
             <div class="alert alert-warning text-center" role="alert">
-                <p class="mb-0">No articles found.</p>
+                <p class="mb-0">No Publications uploaded yet!</p>
             </div>
         @endif
     </div>

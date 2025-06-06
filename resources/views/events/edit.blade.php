@@ -8,11 +8,11 @@
 </head>
 <body>
     @include('imports.headimport')
-    @include('fragments.topbar')
+    {{-- @include('fragments.topbar') --}}
     @include('fragments.navbar')
 
-    <div class="container mt-5">
-        <h1 class="mb-4">Edit Event</h1>
+    <div class="container my-5">
+        <h1 class="mb-4 text-center">Edit Event</h1>
 
         <form action="{{ route('events.update', $event->id) }}" method="POST" class="shadow p-4 rounded bg-white">
             @csrf <!-- Required for PUT requests -->
@@ -71,5 +71,7 @@
             <button type="submit" class="btn btn-primary">Update Event</button>
         </form>  
     </div>
+        @include('fragments.footer')
+    @include('imports.footimport')
 </body>
 </html>

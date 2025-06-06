@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Job Details</title>
+    <title>Opportunity Details</title>
 </head>
 <body>
     @include('imports.headimport')
@@ -28,7 +28,7 @@
                 <p class="mb-3"><strong>Company Name:</strong> {{ $job->company_name }}</p>
                 <p class=""><strong>Posted on:</strong> {{ $job->created_at->format('Y-m-d') }}</p>
                 @if($job->pdf_path)
-                    <a href="{{ route('jobs.viewPdf', basename($job->pdf_path)) }}" target="_blank">View Job PDF</a>
+                    <a href="{{ route('jobs.viewPdf', basename($job->pdf_path)) }}" target="_blank">View PDF</a>
                 @endif
             </div>
         </div>

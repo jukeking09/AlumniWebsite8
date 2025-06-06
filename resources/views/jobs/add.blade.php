@@ -29,13 +29,13 @@
     @include('fragments.topbar')
     @include('fragments.navbar') --}}
      <div class="container mt-5">
-        <h1 class="mb-4 text-center">Add Job</h1>
+        <h1 class="mb-4 text-center">Add Job/Internship</h1>
         <form action="{{ route('jobs.store') }}" method="POST" enctype="multipart/form-data" class="shadow p-4 rounded bg-white">
             @csrf
 
             <!-- Job Title -->
             <div class="mb-3">
-                <label for="job_title" class="form-label">Job Title:</label>
+                <label for="job_title" class="form-label">Title:</label>
                 <input 
                     type="text" 
                     id="job_title" 
@@ -50,7 +50,7 @@
 
             <!-- Job Description -->
             <div class="mb-3">
-                <label for="job_description" class="form-label">Job Description:</label>
+                <label for="job_description" class="form-label">Description:</label>
                 <textarea 
                     id="job_description" 
                     name="job_description" 
@@ -93,7 +93,7 @@
             </div>
             <!-- Job Type -->
             <div class="mb-3">
-                <label for="job_type" class="form-label">Job Type:</label>
+                <label for="job_type" class="form-label">Type:</label>
                 <select id="job_type" name="job_type" class="form-control" required>
                     <option value="">Select</option>
                     <option value="internship">Internship</option>
@@ -103,13 +103,13 @@
 
             <!-- Job PDF Upload -->
             <div class="mb-3">
-                <label for="job_pdf" class="form-label">Upload Job PDF:</label>
+                <label for="job_pdf" class="form-label">Upload PDF:</label>
                 <input type="file" name="pdf" id="pdf" class="form-control" accept="application/pdf">
             </div>
 
             <!-- Submit Button -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary w-100">Add Job</button>
+                <button type="submit" class="btn btn-primary w-100">Add</button>
             </div>
         </form>
     </div>

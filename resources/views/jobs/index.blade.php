@@ -19,12 +19,12 @@
 
     <div class="container py-5">
         <div class="text-center mb-4">
-            <h1 class="h3">Job Listings</h1>
+            <h1 class="h3">Opportunity Listings</h1>
         </div>
         <div class="container mb-4">
             <form method="GET" action="{{ route('jobs') }}" class="row g-2 align-items-end">
                 <div class="col-md-4">
-                    <label for="job_type" class="form-label">Filter by Job Type</label>
+                    <label for="job_type" class="form-label">Filter by Type</label>
                     <select name="job_type" id="job_type" class="form-select">
                         <option value="">All Types</option>
                         <option value="job" {{ request('job_type') == 'job' ? 'selected' : '' }}>Job</option>
@@ -53,7 +53,7 @@
             </div>
         @else
             <div class="alert alert-warning text-center" role="alert">
-                <p class="mb-0">No jobs found.</p>
+                <p class="mb-0">No Opportunities Available yet!</p>
             </div>
         @endif
     </div>

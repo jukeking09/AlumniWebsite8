@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Article</title>
+    <title>Edit Publication</title>
     <style>
         .form-label {
             font-weight: 600;
@@ -33,7 +33,7 @@
     @include('fragments.topbar')
     @include('fragments.navbar') --}}
     <div class="container mt-5">
-        <h1 class="mb-4 text-center">Update Article</h1>
+        <h1 class="mb-4 text-center">Update Publication</h1>
         <form action="{{ route('articles.update', $article->id) }}" method="POST" enctype="multipart/form-data" class="shadow p-4 rounded bg-white">
             @csrf
             <!-- Title -->
@@ -94,7 +94,7 @@
 
             <!-- Submit Button -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary w-100">Update Article</button>
+                <button type="submit" class="btn btn-primary w-100">Update Publication</button>
             </div>
         </form>
     </div>

@@ -42,7 +42,6 @@
     </style>
 </head>
 <body>
-
     <div class="container form-container">
         <div class="card shadow bg-white p-4">
             <h2 class="mb-4 text-center">Add New Event</h2>

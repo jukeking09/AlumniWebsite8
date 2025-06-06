@@ -7,11 +7,13 @@
     <title>Document</title>
 </head>
 <body>
+    @include('fragments.navbar')
+    @include('imports.headimport')
     <div class="container py-5">
     <div class="card shadow">
         <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
             <span>My Events</span>
-            <a href="{{ route('events.create') }}" class="btn btn-light btn-sm">Add New Event</a>
+            <a href="{{ route('events.create') }}" ><button class="btn btn-light btn-sm">Add New Event</button></a>
         </div>
 
         <div class="card-body">
@@ -62,5 +64,7 @@
         </div>
     </div>
 </div>
+    @include('fragments.footer')
+    @include('imports.footimport')
 </body>
 </html>

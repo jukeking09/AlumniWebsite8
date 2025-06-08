@@ -69,15 +69,15 @@ class LoginController extends Controller
     //Handle the registration request
     public function store(Request $request)
     {
-        $photo = $request->file('photo');
-        if ($photo) {
-            logger('Uploaded photo:');
-            logger('Original Name: ' . $photo->getClientOriginalName());
-            logger('MIME Type: ' . $photo->getMimeType());
-            logger('Extension: ' . $photo->getClientOriginalExtension());
-        } else {
-            logger('No photo received.');
-        }
+        // $photo = $request->file('photo');
+        // if ($photo) {
+        //     logger('Uploaded photo:');
+        //     logger('Original Name: ' . $photo->getClientOriginalName());
+        //     logger('MIME Type: ' . $photo->getMimeType());
+        //     logger('Extension: ' . $photo->getClientOriginalExtension());
+        // } else {
+        //     logger('No photo received.');
+        // }
         $validated = $request->validate([
             'title_id' => 'required|exists:titles,id',
             'first_name' => 'required|string|max:255',
@@ -94,6 +94,11 @@ class LoginController extends Controller
             'research_areas' => 'nullable|string|max:1000',
             'photo' => 'required|mimes:jpeg,jpg,png,webp|max:2048',
         ]);
+        //return error messages if validation fails
+         if(validator($request->all())->fails()){
+            return redirect()->back()->withErrors($validated)->withInput();
+        }
+        
         // dd($request->file('photo'));
         // Handle the image upload
         $photoPath = null;

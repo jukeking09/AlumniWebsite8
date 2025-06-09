@@ -50,8 +50,11 @@
                             </div>
                             <div class="modal-body">
                                 <div class="form-group mb-3">
-                                    <label>Title</label>
-                                    <input type="text" name="title" class="form-control" value="{{ $title->title }}" required>
+                                    <label>Title Name</label>
+                                    <input type="text" name="title_name" class="form-control @error('title_name') is-invalid @enderror" value="{{ old('title_name', $title->title_name) }}" required>
+                                    @error('title_name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="modal-footer">

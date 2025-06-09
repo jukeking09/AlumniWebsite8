@@ -58,11 +58,20 @@
                             <div class="modal-body">
                                 <div class="form-group mb-3">
                                     <label>Code</label>
-                                    <input type="text" name="code" class="form-control" value="{{ $country->code }}" required>
+                                    <input type="text" name="code" class="form-control @error('code') is-invalid @enderror" value="{{ $country->code }}" required>
+                                    @error('code') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Country Name</label>
-                                    <input type="text" name="country_name" class="form-control" value="{{ $country->country_name }}" required>
+                                    <input type="text" name="country_name" class="form-control @error('country_name') is-invalid @enderror" value="{{ $country->country_name }}" required>
+                                    @error('country_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>Country Code</label>
+                                    <input type="text" name="country_code" class="form-control @error('country_code') is-invalid @enderror" value="{{ old('country_code', $country->country_code) }}" required>
+                                    @error('country_code')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="modal-footer">

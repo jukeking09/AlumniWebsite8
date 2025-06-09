@@ -94,17 +94,23 @@
             <!-- Job Type -->
             <div class="mb-3">
                 <label for="job_type" class="form-label">Type:</label>
-                <select id="job_type" name="job_type" class="form-control" required>
+                <select id="job_type" name="job_type" class="form-control @error('job_type') is-invalid @enderror" required>
                     <option value="">Select</option>
-                    <option value="internship">Internship</option>
-                    <option value="job">Job</option>
+                    <option value="internship" {{ old('job_type') == 'internship' ? 'selected' : '' }}>Internship</option>
+                    <option value="job" {{ old('job_type') == 'job' ? 'selected' : '' }}>Job</option>
                 </select>
+                @error('job_type')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
 
             <!-- Job PDF Upload -->
             <div class="mb-3">
                 <label for="job_pdf" class="form-label">Upload PDF:</label>
-                <input type="file" name="pdf" id="pdf" class="form-control" accept="application/pdf">
+                <input type="file" name="pdf" id="pdf" class="form-control @error('pdf') is-invalid @enderror" accept="application/pdf">
+                @error('pdf')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
 
             <!-- Submit Button -->

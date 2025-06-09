@@ -51,7 +51,10 @@
                             <div class="modal-body">
                                 <div class="form-group mb-3">
                                     <label>Role Name</label>
-                                    <input type="text" name="role_name" class="form-control" value="{{ $role->role_name }}" required>
+                                    <input type="text" name="role_name" class="form-control @error('role_name') is-invalid @enderror" value="{{ old('role_name', $role->role_name) }}" required>
+                                    @error('role_name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="modal-footer">

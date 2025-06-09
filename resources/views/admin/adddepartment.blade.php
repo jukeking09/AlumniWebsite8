@@ -51,7 +51,10 @@
                             <div class="modal-body">
                                 <div class="form-group mb-3">
                                     <label>Department Name</label>
-                                    <input type="text" name="department_name" class="form-control" value="{{ $department->department_name }}" required>
+                                    <input type="text" name="department_name" class="form-control @error('department_name') is-invalid @enderror" value="{{ old('department_name', $department->department_name) }}" required>
+                                    @error('department_name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="modal-footer">

@@ -132,3 +132,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 
 Route::get('/generate-id-card/{id}', [IDCardController::class, 'generateIdCard'])->name('generateIdCard')->middleware('auth');
 
+//Route For Reset Password
+Route::get('/password/reset', [LoginController::class, 'showResetForm'])->name('password.request')->middleware('guest');
+Route::post('/password/email', [LoginController::class, 'sendResetLinkEmail'])->name('password.email')->middleware('guest');
+Route::get('/password/reset/{token}', [LoginController::class, 'showResetForm'])->name('password.reset')->middleware('guest');
+Route::post('/password/reset', [LoginController::class, 'reset'])->name('password.update')->middleware('guest');

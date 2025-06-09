@@ -6,7 +6,7 @@
     <title>Upload Images For Event</title>
 </head>
 <body>
-        @include('fragments.navbar')
+    @include('fragments.navbar')
     @include('imports.headimport')
     <div class="container">
         <div class="card p-5 m-5">

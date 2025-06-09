@@ -117,7 +117,7 @@
 
             <!-- Submit Button -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary w-100">Update </button>
+                <button type="submit" class="btn btn-primary w-100">Update</button>
             </div>
         </form>
     </div>

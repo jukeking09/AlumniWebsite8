@@ -69,6 +69,9 @@
             Don't have an account? 
             <a href="{{ route('register') }}">Register here</a>
         </p>
+        <p class="text-center">
+            <a href="{{ route('password.request') }}">Forgot your password?</a>
+        </p>
     </div>
 
     @include('fragments.footer')

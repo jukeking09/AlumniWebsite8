@@ -26,7 +26,10 @@
         @csrf
         <div class="form-group">
             <label>Course Name</label>
-            <input type="text" name="course_name" class="form-control" required>
+            <input type="text" name="course_name" class="form-control @error('course_name') is-invalid @enderror" required value="{{ old('course_name') }}">
+            @error('course_name')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary mt-2">Add Course</button>
     </form>
@@ -51,7 +54,10 @@
                             <div class="modal-body">
                                 <div class="form-group mb-3">
                                     <label>Course Name</label>
-                                    <input type="text" name="course_name" class="form-control" value="{{ $course->course_name }}" required>
+                                    <input type="text" name="course_name" class="form-control @error('course_name') is-invalid @enderror" value="{{ old('course_name', $course->course_name) }}" required>
+                                    @error('course_name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -65,6 +71,12 @@
         @endforeach
     </ul>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @if(session('open_edit_modal'))
+        <script>
+            var editModal = new bootstrap.Modal(document.getElementById('editCourseModal{{ session('open_edit_modal') }}'));
+            editModal.show();
+        </script>
+    @endif
 </div>
 </body>
 </html>

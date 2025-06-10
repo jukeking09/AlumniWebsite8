@@ -92,7 +92,7 @@ class LoginController extends Controller
             'address' => 'required|string|max:255',
             'designation' => 'required|string|max:255',
             'research_areas' => 'nullable|string|max:1000',
-            'photo' => 'required|mimes:jpeg,jpg,png,webp|max:2048',
+            'photo' => 'required|mimes:jpeg,jpg,png,webp,gif|max:2048',
         ]);
         //return error messages if validation fails
          if(validator($request->all())->fails()){

@@ -112,7 +112,11 @@
             <!-- Upload New Job PDF -->
             <div class="mb-3">
                 <label for="job_pdf" class="form-label">Replace PDF:</label>
-                <input type="file" name="pdf" id="pdf" class="form-control" accept="application/pdf">
+                <input type="file" name="pdf" id="pdf" class="form-control @error('pdf') is-invalid @enderror" accept="application/pdf">
+                <div class="form-text text-muted">Accepted type: PDF. Max size: 2MB. Leave empty to keep the current PDF.</div>
+                @error('pdf')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
 
             <!-- Submit Button -->

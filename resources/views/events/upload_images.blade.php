@@ -16,22 +16,37 @@
     <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
             <div class="card-body">
-                <form action="{{ route('events.uploadImages', $event->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="mb-3">
-            <label for="event_images" class="form-label">Select Images</label>
-            <input type="file" name="event_images[]" id="event_images" class="form-control @error('event_images') is-invalid @enderror" multiple accept="image/*" required>
-            @error('event_images')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <button type="submit" class="btn btn-primary">Upload Images</button>
-    </form>
+                @if($event->images->count() >= 5)
+                    <div class="alert alert-info text-center">
+                        You have reached the maximum of 5 images for this event. You cannot upload more images.
+                    </div>
+                @else
+                    <form action="{{ route('events.uploadImages', $event->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="event_images" class="form-label">Select Images</label>
+                            <input type="file" name="event_images[]" id="event_images" class="form-control @error('event_images') is-invalid @enderror" multiple accept="image/*" required onchange="checkFileCount(this)">
+                            <div class="form-text text-muted">Accepted types: JPG, JPEG, PNG, GIF, WEBP. Max size: 2MB per image. You can select up to 5 files.</div>
+                            @error('event_images')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary">Upload Images</button>
+                    </form>
+                @endif
             </div>
     
         </div>
 </div>
     @include('fragments.footer')
     @include('imports.footimport')
+    <script>
+        function checkFileCount(input) {
+            if (input.files.length > 5) {
+                alert('You can upload a maximum of 5 images.');
+                input.value = '';
+            }
+        }
+    </script>
 </body>
 </html>

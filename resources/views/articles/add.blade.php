@@ -68,8 +68,9 @@
                     type="file" 
                     id="article_image_path" 
                     name="article_image_path" 
-                    class="form-control" @error('article_image_path') is-invalid @enderror"
+                    class="form-control @error('article_image_path') is-invalid @enderror"
                     accept=".jpg, .jpeg, .png, .gif">
+                <div class="form-text text-muted">Accepted types: JPG, JPEG, PNG, GIF, WEBP. Max size: 2MB.</div>
                 @error('article_image_path')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -84,6 +85,7 @@
                     name="article_path" 
                     class="form-control @error('article_path') is-invalid @enderror" 
                     accept=".pdf, .doc, .docx">
+                <div class="form-text text-muted">Accepted types: PDF, DOC, DOCX.</div>
                 @error('article_path')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

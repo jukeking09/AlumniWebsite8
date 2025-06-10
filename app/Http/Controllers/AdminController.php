@@ -198,7 +198,7 @@ class AdminController extends Controller
         $request->validate([
             'alumniname' => 'required|string|max:255',
             'description' => 'required|string',
-            'photo' => 'required|mimes:jpg,png,jpeg|max:2048',
+            'photo' => 'required|mimes:jpg,png,jpeg,webp,gif|max:2048',
         ]);
 
         // Handle file upload
@@ -218,7 +218,7 @@ class AdminController extends Controller
         $request->validate([
             'alumniname' => 'required|string|max:255',
             'description' => 'required|string',
-            'photo' => 'nullable|mimes:jpg,png,jpeg|max:2048',
+            'photo' => 'nullable|mimes:jpg,png,jpeg,webp,gif|max:2048',
         ]);
 
         $alumni = ProminentAlumnus::findOrFail($id);
@@ -279,7 +279,7 @@ class AdminController extends Controller
     $request->validate([
         'name' => 'required|string|max:255',
         'post' => 'required|string|max:255',
-        'picture' => 'required|mimes:jpg,jpeg,png|max:2048',
+        'picture' => 'required|mimes:jpg,jpeg,png,webp,gif|max:2048',
     ]);
 
     // Store in private disk under executive_photos/
@@ -300,7 +300,7 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'post' => 'required|string|max:255',
-            'picture' => 'nullable|mimes:jpg,jpeg,png|max:2048',
+            'picture' => 'nullable|mimes:jpg,jpeg,png,webp,gif|max:2048',
         ]);
         $executiveMember = ExecutiveMember::findOrFail($id);
         $executiveMember->name = $request->name;

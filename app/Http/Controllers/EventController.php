@@ -108,8 +108,12 @@ class EventController extends Controller
             return redirect()->route('events.show', $id)->with('error', 'You can upload images only after the event date.');
         }
 
+        // Count current images for this event
+        $currentImageCount = $event->images()->count();
+
         $validator = Validator::make($request->all(), [
-            'event_images.*' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'event_images' => 'required|array|max:' . max(0, 5 - $currentImageCount),
+            'event_images.*' => 'required|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -123,6 +127,12 @@ class EventController extends Controller
                     'image_path' => $path,
                 ]);
             }
+        }
+
+        // After upload, check if user exceeded the limit (should not happen, but just in case)
+        if ($event->images()->count() > 5) {
+            // Optionally, delete the extra images or show an error
+            return redirect()->route('events.show', $id)->with('error', 'You cannot have more than 5 images for this event.');
         }
 
         return redirect()->route('events.show', $id)->with('success', 'Images uploaded successfully.');

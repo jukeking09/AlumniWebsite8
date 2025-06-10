@@ -72,9 +72,12 @@
                     type="file" 
                     id="article_image_path" 
                     name="article_image_path" 
-                    class="form-control" 
-                    accept="image/*">
-                <small class="text-muted">Leave empty to keep the current image.</small>
+                    class="form-control @error('article_image_path') is-invalid @enderror" 
+                    accept=".jpg, .jpeg, .png, .gif">
+                <div class="form-text text-muted">Accepted types: JPG, JPEG, PNG, WEBP, GIF. Max size: 2MB. Leave empty to keep the current image.</div>
+                @error('article_image_path')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
 
             <!-- Document Upload -->
@@ -86,7 +89,7 @@
                     name="article_path" 
                     class="form-control @error('article_path') is-invalid @enderror" 
                     accept=".pdf, .doc, .docx">
-                <small class="text-muted">Leave empty to keep the current document.</small>
+                <div class="form-text text-muted">Accepted types: PDF, DOC, DOCX. Leave empty to keep the current document.</div>
                 @error('article_path')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

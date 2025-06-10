@@ -31,7 +31,7 @@ class ArticleController extends Controller
             'article_title' => 'required|string|max:255',
             'article_description' => 'required|string',
             'article_path' => 'required|file|mimes:pdf,doc,docx',
-            'article_image_path' => 'nullable|mimes:jpeg,jpg,png,webp|max:2048',
+            'article_image_path' => 'nullable|mimes:jpeg,jpg,png,webp,gif|max:2048',
         ]);
 
         if ($validator->fails()) {

@@ -108,6 +108,7 @@
             <div class="mb-3">
                 <label for="job_pdf" class="form-label">Upload PDF:</label>
                 <input type="file" name="pdf" id="pdf" class="form-control @error('pdf') is-invalid @enderror" accept="application/pdf">
+                <div class="form-text text-muted">Accepted type: PDF. Max size: 2MB.</div>
                 @error('pdf')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

@@ -1,0 +1,5 @@
+PHP INI STUFF
+
+Uncomment:
+;extension=mbstring
+;extension=gd2

@@ -54,10 +54,10 @@
         <div class="col-md-6 mb-4">
             <div class="card shadow-lg">
                 <div class="card-body py-5">
-                    <h5 class="card-title">Manage Jobs</h5>
-                    <p class="card-text text-muted">Create new job listings or view your existing ones.</p>
-                    <a href="{{ route('jobs.create') }}" class="btn btn-primary mb-2 w-100">Add Job</a>
-                    <a href="{{ route('jobs.myJobs') }}" class="btn btn-secondary w-100">View My Jobs</a>
+                    <h5 class="card-title">Manage Opportunities</h5>
+                    <p class="card-text text-muted">Create or manage your Opportunity listings..</p>
+                    <a href="{{ route('jobs.create') }}" class="btn btn-primary mb-2 w-100">Add Opportunities</a>
+                    <a href="{{ route('jobs.myJobs') }}" class="btn btn-secondary w-100">View My Posted Opportunities</a>
                 </div>
             </div>
         </div>
@@ -66,10 +66,10 @@
         <div class="col-md-6 mb-4">
             <div class="card shadow-lg">
                 <div class="card-body py-5">
-                    <h5 class="card-title">Manage Articles</h5>
-                    <p class="card-text text-muted">Share your knowledge by adding articles or revisiting your published ones.</p>
-                    <a href="{{ route('articles.create') }}" class="btn btn-primary mb-2 w-100">Add Article</a>
-                    <a href="{{ route('articles.myArticles') }}" class="btn btn-secondary w-100">View My Articles</a>
+                    <h5 class="card-title">Manage Publications</h5>
+                    <p class="card-text text-muted">Add or edit your Publications.</p>
+                    <a href="{{ route('articles.create') }}" class="btn btn-primary mb-2 w-100">Add Publications</a>
+                    <a href="{{ route('articles.myArticles') }}" class="btn btn-secondary w-100">View My Publications</a>
                 </div>
             </div>
         </div>

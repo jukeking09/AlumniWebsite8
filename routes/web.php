@@ -10,6 +10,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IDCardController;
+use App\Http\Controllers\ForgotPasswordController;
 
 
 //Route For HomeController
@@ -133,7 +134,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 Route::get('/generate-id-card/{id}', [IDCardController::class, 'generateIdCard'])->name('generateIdCard')->middleware('auth');
 
 //Route For Reset Password
-Route::get('/password/reset', [LoginController::class, 'showResetForm'])->name('password.request')->middleware('guest');
-Route::post('/password/email', [LoginController::class, 'sendResetLinkEmail'])->name('password.email')->middleware('guest');
-Route::get('/password/reset/{token}', [LoginController::class, 'showResetForm'])->name('password.reset')->middleware('guest');
-Route::post('/password/reset', [LoginController::class, 'reset'])->name('password.update')->middleware('guest');
+Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request')->middleware('guest');
+Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email')->middleware('guest');
+Route::get('/password/reset/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset')->middleware('guest');
+Route::post('/password/reset', [ForgotPasswordController::class, 'reset'])->name('password.update')->middleware('guest');

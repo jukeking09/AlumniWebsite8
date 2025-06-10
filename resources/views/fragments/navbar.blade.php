@@ -3,7 +3,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-white navbar-light p-lg-0">
             <a href="{{ route('home') }}" class="navbar-brand d-lg-none">
-                <h1 class="fw-bold m-0">SAC Alumni</h1>
+                <h1 class="fw-bold m-0">SACSAA</h1>
             </a>
             <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
                 data-bs-target="#navbarCollapse">

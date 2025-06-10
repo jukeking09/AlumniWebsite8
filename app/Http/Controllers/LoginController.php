@@ -138,7 +138,7 @@ class LoginController extends Controller
         $pdfContent = $idCardController->generateIdCardToMail($user->id);
 
         // Send the email with the PDF attached
-        $emailResult = $this->sendRegistrationEmail($user->email, $user->first_name, $pdfContent);
+        $emailResult = $this->sendRegistrationEmail($user->email, $user->first_name . ' ' . $user->last_name, $pdfContent);
 
         //Log::info('Email result: ' . $emailResult);
         // dd('Email result: ' . $emailResult);
@@ -146,7 +146,7 @@ class LoginController extends Controller
         return redirect()->route('login')->with('success', 'Registration successful. You can now log in.');
     }
 
-    public function sendRegistrationEmail($toEmail, $toName,$pdfContent)
+    public function sendRegistrationEmail($toEmail, $toName, $pdfContent)
         {
             $mail = new PHPMailer(true);
 
@@ -167,7 +167,7 @@ class LoginController extends Controller
                 // Email content
                 $mail->isHTML(true);
                 $mail->Subject = 'SACSAA Registration';
-                $mail->Body    = "<h1>Welcome, $toName!</h1><p>Your registration for SACSAA was successful!</p><p>Please Find Your SACSAA ID Card Attached Below.</p>";
+                $mail->Body    = "<h1>Dear $toName!</h1><p>Your registration for SACSAA was successful!</p><p>Please Find Your SACSAA ID Card Attached Below.</p>";
                 $mail->AltBody = "Welcome, $toName! Your registration for SACSAA was successful!";
                 $mail->addStringAttachment($pdfContent, 'IDCard.pdf', 'base64', 'application/pdf');
 

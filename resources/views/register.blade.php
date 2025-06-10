@@ -75,12 +75,29 @@
             firstErrorField.focus(); // Optional: Focus on the field for convenience
         }
     }
+    else{
+        // Show the modal
+        const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
+            backdrop: 'static', // Disable closing modal on click outside
+            keyboard: false     // Disable closing modal with keyboard
+        });
+
+        loadingModal.show();
+
+        // Allow form to proceed after showing the modal
+        setTimeout(() => this.submit(), 100); // Small delay to show the modal before submission
+    
+    }
 });
 });
     </script>
     <style>
         .login a{
             color: var(--bs-blue)!important;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -248,6 +265,19 @@
             </div>
         </div>
     </div>
+    <!-- Bootstrap Modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-body">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-3">Registering, please be patient...</p>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 

@@ -38,7 +38,7 @@
                         <li>BCom with Major in Management</li>
                     </ul>
                     <p class="text-dark">
-                        This course is purely aimed at students who are very economically weak and have a lower percentage in their class XII. The college provides them scholarships up to <strong>75%</strong> annually. The rest of the fee that such students pay is carried over to their next year if they meet the academic target assigned to them and secure class attendance of 85% and above.
+                        This course is purely aimed at students who are economically weak and have a lower percentage in their class XII. The college provides them scholarships up to <strong>75%</strong> annually. The rest of the fee that such students pay is carried over to their next year if they meet the academic target assigned to them and secure class attendance of 85% and above.
                     </p>
                 </div>
 

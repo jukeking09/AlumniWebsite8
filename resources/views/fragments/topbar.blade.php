@@ -35,7 +35,7 @@
                         <a class="btn btn-sm-square btn-light text-primary ms-2" target="_blank" href="https://x.com/sac_shillong"><i class="fab fa-twitter"></i></a>
                         <!-- <a class="btn btn-sm-square btn-light text-primary ms-2" href=""><i class="fab fa-linkedin-in"></i></a> -->
                         <a class="btn btn-sm-square btn-light text-primary ms-2" target="_blank" href="https://www.instagram.com/stanthonyscollege.shillong/?hl=en"><i class="fab fa-instagram"></i></a>
-                        
+                        <a class="btn btn-sm-square btn-light text-primary ms-2" target="_blank" href="https://www.youtube.com/@SACSHILLONG"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>

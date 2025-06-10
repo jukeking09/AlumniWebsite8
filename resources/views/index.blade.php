@@ -21,7 +21,7 @@
 
     /* For screens with a maximum width of 800px */
     @media (max-width: 800px) {
-        .swiper-slide img {
+        div.scroll-container img {
             max-width: 400px; /* Adjust the maximum width */
             min-width: 400px; /* Adjust the minimum width */
             height: 400px; /* Adjust the height to maintain proportions */
@@ -30,7 +30,7 @@
 
     /* For screens with a maximum width of 600px */
     @media (max-width: 600px) {
-        .swiper-slide img {
+        div.scroll-container img {
             max-width: 300px; /* Further reduce the maximum width */
             min-width: 300px; /* Further reduce the minimum width */
             height: 300px; /* Reduce the height for smaller screens */
@@ -39,10 +39,10 @@
 
     /* For screens with a maximum width of 400px */
     @media (max-width: 400px) {
-        .swiper-slide img {
-            max-width: 100%; /* Make it fully responsive */
-            min-width: auto; /* Remove fixed minimum width */
-            height: auto; /* Allow proportional height adjustment */
+        div.scroll-container img {
+            max-width: 150x; /* Further reduce the maximum width */
+            min-width: 150x; /* Further reduce the minimum width */
+            height: 150x;
         }
     }
 
@@ -58,6 +58,26 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    div.scroll-container {
+    background-color: white;
+    overflow: hidden; /* Hide the scrollbar */
+    white-space: nowrap;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    }
+
+    div.scroll-container img {
+    padding: 10px;
+    }
+
+ div.scroll-container img{
+        max-width: 500px; 
+        min-width:500px; 
+        height: 500px;
     }
     
 </style>
@@ -79,8 +99,8 @@
 
         <!-- Left Section: Main Content -->
         <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center position-relative">
-            <h1 class="display-4 text-white text-uppercase mb-4 ps-5">Anthonys is calling you</h1>
-            <h1 class="display-4 text-white mb-4 ps-5"><em>Bring Alive Memories</em></h1>
+            <h1 class="display-4 text-white text-uppercase mb-4 ps-5">St. Anthony's is calling you</h1>
+            <h3 class="text-white mb-4 ps-5"><em style="font-family: Tahoma">Bring Alive Memories</em></h3>
             @guest
                 <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5 py-3 my-5">Join</a>
             @endguest
@@ -93,7 +113,7 @@
                 <!-- First Sticky Div -->
                 <div class="card shadow-lg mb-4">
                     <div class="card-header bg-primary text-white text-center">
-                        <h5 class="text-white">Members</h5><i class="bi bi-person mt-1"></i>
+                        <h5 class="text-white">Members</h5><i class="bi bi-person mt-1"></i><i class="bi bi-person mt-1"></i><i class="bi bi-person mt-1"></i>
                     </div>
                     <div class="card-body bg-primary">
                        <span class="h4 text-white">{{ $userCount }}</span>
@@ -124,8 +144,8 @@
 
         <!-- Left Section: Main Content -->
         <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center position-relative">
-            <h1 class="display-6 text-white text-uppercase mb-2 ps-5">Anthonys is calling you</h1>
-            <h1 class="display-6 text-white mb-4 ps-5"><em>Bring Alive Memories</em></h1>
+            <h1 class="display-6 text-white text-uppercase mb-2 ps-5">St. Anthony's is calling you</h1>
+            <h3 class="text-white mb-4 ps-5"><em style="font-family: Tahoma">Bring Alive Memories</em></h3>
             @guest
                 <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5 py-3 my-3">Join</a>
             @endguest
@@ -138,7 +158,7 @@
                 <!-- First Sticky Div -->
                 <div class="card shadow-lg mb-4">
                     <div class="card-header bg-primary text-white text-center">
-                        <h5 class="text-white">Members</h5><i class="bi bi-person mt-1"></i>
+                        <h5 class="text-white">Members</h5><i class="bi bi-person mt-1"></i><i class="bi bi-person mt-1"></i><i class="bi bi-person mt-1"></i>
                     </div>
                     <div class="card-body bg-primary">
                        <span class="h4 text-white">{{ $userCount }}</span>
@@ -161,7 +181,7 @@
 <!-- SMALL SCREENS -->
     <div class="d-none d-sm-block d-md-none container-fluid p-0 mb-2 " >
         <div class="text-center">
-            <h1 class="text-white text-uppercase mb-4">Anthonys SMALL is calling you</h1>
+            <h1 class="text-white text-uppercase mb-4">Anthonys is calling you</h1>
             @guest
                 <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5 py-3">Join Us</a>
             @endguest
@@ -172,7 +192,7 @@
     <!-- About Section -->
     <section id="about" class="about section my-2">
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
+      <div class="container section-title mt-5" data-aos="fade-up">
         <h2>About Us<br></h2>
       </div><!-- End Section Title -->
 
@@ -181,7 +201,7 @@
                 <p>
                     The St. Anthony’s College Shillong Alumni Association (SACSAA), is made up of past pupils of the college who have voluntarily organized 
                     themselves into an association attached to St. Anthony’s College, Shillong. 
-                    The association was officially born on 4th October 2005. The association has its own constitution that governs its functioning. 
+                    The association was officially established on 4th October 2005. The association has its own constitution that governs its functioning. 
                     The executive team along with the advisory members oversee the functioning of the association. 
                     The association is affiliated to the parent body of the Don Bosco Past Pupils Association. 
                 </p>
@@ -191,15 +211,15 @@
                     <li>To keep in touch with and animate all former students 
                         so as to help them live a value based education learned at this Don Bosco Institution. </li>
                     <li>Maintaining a close contact with the alma mater,  St. Anthony’s College by providing networking, 
-                        collaboration in its growth and development</li>
-                    <li>To keep alive the ties of fraternal Antonian family spirit with all the alumni, 
-                        making the college a place of memory always</li>
+                        collaboration in its growth and development.</li>
+                    <li>To keep alive the ties of fraternal Anthonian family spirit with all the alumni, 
+                        making the college a place of memory always.</li>
                 </ul>
           </div>
         </div>
 
         <div class="container my-5">
-            <h2>Motto<br></h2>
+            <h2 class="text-center">Motto<br></h2>
             <h3 class="anthonysbluetext text-center">MAKING A DIFFERENCE</h3>
         </div>
 
@@ -305,22 +325,9 @@
     </section>
 <div class="container">
      <h2 class="text-center">Prominent Alumni</h2>
-
-<!-- Swiper -->
-  <div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-        <!-- Make populate from db-->
-      {{-- <div class="swiper-slide">
-            <figure class="text-center">
-            <img src="img/Prominent Alumni/pasangma.jpg" alt="(L) Shri. P A Sangma" class="img-fluid rounded">
-            <figcaption class="mt-2 text-bold small">
-                (L) Shri. P A Sangma, Former Lok Sabha Speaker, Chief Minister
-             /figcaption>
-       </figure>
-    </div> --}}
-
-    @foreach ($prominentalumni as $alumnus)
-            <div class="swiper-slide">
+     <div class="scroll-container" id="scrollContainer">
+         @foreach ($prominentalumni as $alumnus)
+            <div class="">
                  <figure class="text-center">
                     <img src="{{ route('alumni_photos', basename($alumnus->photo)) }}"  alt="{{ $alumnus->alumniname }}" class="img-fluid rounded">
                     <figcaption class="mt-2 text-bold small">
@@ -330,33 +337,49 @@
             </div>
     @endforeach
     </div>
-    <div class="swiper-button-next d-none d-lg-block"></div>
-    <div class="swiper-button-prev d-none d-lg-block"></div>
-    {{-- <div class="swiper-pagination"></div> --}}
-    
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <!-- Link Swiper's CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script>
+const scrollContainer = document.getElementById("scrollContainer");
 
-        <!-- Initialize Swiper -->
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-            spaceBetween: 30,
-            centeredSlides: true,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            });
-        </script>
+let scrollAmount = 0;
+let scrollStep = 0.2; // Default speed of scrolling
+let scrollDelay = 20; // Delay in milliseconds
+let isHovered = false;
+
+// Auto scrolling logic
+function autoScroll() {
+  if (!isHovered) {
+    scrollAmount += scrollStep;
+    scrollContainer.scrollLeft = scrollAmount;
+
+    // Reset scroll if end reached
+    if (scrollAmount >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+      scrollAmount = 0;
+    }
+  }
+  requestAnimationFrame(autoScroll);
+}
+
+// Adjust scrolling speed dynamically
+scrollContainer.addEventListener("wheel", (event) => {
+  event.preventDefault();
+  const delta = Math.sign(event.deltaY);
+  scrollContainer.scrollLeft += delta * (scrollStep * 10); // Increase speed on manual scroll
+});
+
+// Hover event listeners
+scrollContainer.addEventListener("mouseenter", () => {
+  isHovered = true;
+  scrollStep = 5; // Increase speed on hover
+});
+
+scrollContainer.addEventListener("mouseleave", () => {
+  isHovered = false;
+  scrollStep = 0.2; // Reset speed on mouse leave
+});
+
+// Start the scrolling
+autoScroll();
+</script>
   </div>
 </div>
      {{-- <section id="events">

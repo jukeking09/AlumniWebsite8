@@ -15,7 +15,7 @@
         <h1 class="mb-4 text-center">Edit Event</h1>
 
         <div class="d-flex justify-content-center">
-            <form action="{{ route('events.update', $event->id) }}" method="POST" class="shadow p-4 rounded bg-white" style="width: 100%; max-width: 500px;">
+            <form action="{{ route('events.update', $event->id) }}" method="POST" class="shadow p-4 rounded bg-white" style="width: 100%; max-width: 500px;" enctype="multipart/form-data">
                 @csrf <!-- Required for PUT requests -->
                 <input type="hidden" name="id" value="{{ $event->id }}">
 
@@ -69,6 +69,22 @@
                     @enderror
                 </div>
 
+                <div class="mb-3">
+                    <label for="image_path" class="form-label">Event Image</label>
+                    <input type="file" class="form-control @error('image_path') is-invalid @enderror" id="image_path" name="image_path" accept="image/*">
+                    @if($event->image_path)
+                        <div class="col-md-3 col-sm-6 col-12">
+                        <div class="card">
+                            <img src="{{ route('event-image.show', basename($event->image_path)) }}" alt="Event Image" class="card-img-top rounded" />
+                        </div>
+                    </div>
+                    @endif
+                    @error('image_path')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    <small class="form-text">Leave blank to keep the current image.</small>
+                </div>
+                
                 <button type="submit" class="btn btn-primary w-100">Update Event</button>
             </form>
         </div>

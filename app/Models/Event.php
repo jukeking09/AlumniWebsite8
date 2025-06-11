@@ -16,6 +16,7 @@ class Event extends Model
         'user_id',
         'event_time_from',
         'event_time_to',
+        'image_path',
     ];
 
     public function user()

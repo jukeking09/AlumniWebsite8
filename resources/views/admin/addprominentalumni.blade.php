@@ -11,6 +11,9 @@
     @include('admin.sidebar')
     <div class="container mt-5">
         <h2 class="mb-4">Add Prominent Alumni</h2>
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
         <form action="{{ route('admin.prominent_alumni.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

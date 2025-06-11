@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
 use Carbon\Carbon;
 use App\Models\EventImage;
+use Illuminate\Support\Facades\Storage;
 class EventController extends Controller
 {
     public function index()
@@ -29,9 +30,16 @@ class EventController extends Controller
             'event_date' => 'required|date',
             'event_time_from' => 'required|date_format:H:i',
             'event_time_to' => 'required|date_format:H:i|after:event_time_from',
+            'image_path' => 'nullable|mimes:jpg,jpeg,webp,gif,png|max:2048' // Optional image upload
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
+        }
+        // Check if Image is uploaded
+        if ($request->hasFile('image_path')) {
+            $path = $request->file('image_path')->store('events/images', 'private');
+        } else {
+            $path = null; // No image uploaded
         }
         Event::create([
             'event_name' => $request->event_name,
@@ -40,6 +48,7 @@ class EventController extends Controller
             'event_time_from' => $request->event_time_from,
             'event_time_to' => $request->event_time_to,
             'user_id' => Auth::id(),
+            'image_path' => $path,
         ]);
 
         return redirect()->route('events')->with('success', 'Event created successfully.');
@@ -71,17 +80,27 @@ class EventController extends Controller
             'event_date' => 'required|date',
             'event_time_from' => 'required|date_format:H:i',
             'event_time_to' => 'required|date_format:H:i|after:event_time_from',
+            'image_path' => 'nullable|mimes:jpeg,jpg,png,webp,gif|max:2048', // Optional image upload
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
+        //Check if Image is uploaded
+        if ($request->hasFile('image_path')) {
+            $path = $request->file('image_path')->store('events/images', 'private');
+            // Optionally, you can delete the old image if it exists
+            if ($event->image_path) {
+                Storage::disk('private')->delete($event->image_path);
+            }
+            $event->image_path = $path;
+        }
         $event->update([
             'event_name' => $request->event_name,
             'event_description' => $request->event_description,
             'event_date' => $request->event_date,
             'event_time_from' => $request->event_time_from,
             'event_time_to' => $request->event_time_to,
+            'image_path' => $event->image_path, // Use the updated path if it was changed
         ]);
 
         return redirect()->route('events')->with('success', 'Event updated successfully.');
@@ -162,4 +181,6 @@ class EventController extends Controller
         }
         return response()->file($path);
     }
+
+
 }

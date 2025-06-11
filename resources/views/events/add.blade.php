@@ -44,8 +44,14 @@
 <body>
     <div class="container form-container">
         <div class="card shadow bg-white p-4">
+            @if (e(session('success')))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>    
+            @endif
             <h2 class="mb-4 text-center">Add New Event</h2>
-            <form action="{{ route('events.store') }}" method="POST">
+            <form action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <!-- Title -->
@@ -116,6 +122,15 @@
                         name="event_time_to" 
                         value="{{ old('event_time_to') }}">
                     @error('event_time_to')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Event Image Upload -->
+                <div class="mb-3">
+                    <label for="image_path" class="form-label">Event Image</label>
+                    <input type="file" class="form-control @error('image_path') is-invalid @enderror" id="image_path" name="image_path" accept="image/*">
+                    @error('image_path')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

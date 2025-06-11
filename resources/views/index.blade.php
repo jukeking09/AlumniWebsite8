@@ -233,53 +233,32 @@
                     </tr>
                 </thead>
                 <tbody class="text-dark">
-                    <tr>
-                        <td>Deep Gurung</td>
-                        <td>President</td>
-                    </tr>
-                    <tr>
-                        <td>Kesterlee L Syiemiong</td>
-                        <td>Vice President (Senior)</td>
-                    </tr>
-                    <tr>
-                        <td>Bankerlang Sohtun</td>
-                        <td>Jr Vice President (GEX)</td>
-                    </tr>
-                    <tr>
-                        <td>Vancouver Shullai</td>
-                        <td>Secretary</td>
-                    </tr>
-                    <tr>
-                        <td>Upasna Rai Khongsngi</td>
-                        <td>Treasurer</td>
-                    </tr>
-                    <tr>
-                        <td>Aman Kumar</td>
-                        <td>Executive Member</td>
-                    </tr>
-                    <tr>
-                        <td>Pius Bareh</td>
-                        <td>Executive Member</td>
-                    </tr>
-                    <tr>
-                        <td>Daryllstar Lyngdoh</td>
-                        <td>Executive Member</td>
-                    </tr>
-                    <tr>
-                        <td>Prinali Tanti</td>
-                        <td>Executive Member</td>
-                    </tr>
-                    <tr>
-                        <td>Michael R Syiemlieh</td>
-                        <td>Executive Member</td>
-                    </tr>
-                    <tr>
-                        <td>Fr Joby Joseph sdb</td>
-                        <td>Delegate</td>
-                    </tr>
+                    @foreach(
+                        $executiveMembers->sortBy(function($member) {
+                            $order = [
+                                'President' => 1,
+                                'Vice President' => 2,
+                                'Secretary' => 3,
+                                'Treasurer' => 4,
+                                'Executive Member' => 5,
+                                'Delegate' => 6
+                            ];
+                            // Normalize post string for matching
+                            foreach ($order as $key => $val) {
+                                if (stripos($member->post, $key) !== false) {
+                                    return $val;
+                                }
+                            }
+                            return 99; // fallback for unknown posts
+                        }) as $member)
+                        <tr>
+                            <td>{{ $member->name }}</td>
+                            <td>{{ $member->post }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
-                </table>
-            </div>
+            </table>
+        </div>
         
       <!-- End Section Title -->
     </section>

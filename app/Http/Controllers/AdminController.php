@@ -164,12 +164,14 @@ class AdminController extends Controller
     public function storeRole(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'role_name' => 'required|string|max:255'
+            'role_name' => 'required|string|max:255',
+            'role_desc' => 'nullable|string|max:500'
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        Role::create(['role_name' => $request->role_name]);
+        Role::create(['role_name' => $request->role_name
+            , 'role_desc' => $request->role_desc]);
 
         return redirect()->route('admin.roles.index')->with('success', 'Role added successfully.');
     }
@@ -178,12 +180,14 @@ class AdminController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'role_name' => 'required|string|max:255'
+            , 'role_desc' => 'nullable|string|max:500'
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
         $role = Role::findOrFail($id);
-        $role->update(['role_name' => $request->role_name]);
+        $role->update(['role_name' => $request->role_name
+            , 'role_desc' => $request->role_desc]);
 
         return redirect()->route('admin.roles.index')->with('success', 'Role updated successfully.');
     }
@@ -236,7 +240,7 @@ class AdminController extends Controller
 
         $alumni->save();
 
-        return redirect()->route('admin.alumnis.index')->with('success', 'Alumnus updated successfully!');
+        return redirect()->route('admin.prominent_alumni.create')->with('success', 'Alumnus updated successfully!');
     }
 
     public function showImage($filename) {

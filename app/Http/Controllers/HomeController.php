@@ -12,11 +12,12 @@ class HomeController extends Controller
 {
     public function home()
     {
-                $eventCount = Event::count(); // Get the total count of events
+        $eventCount = Event::count(); // Get the total count of events
         $userCount = User::count();   // Get the total count of users
         $prominentalumni = ProminentAlumnus::all();
+        $executiveMembers = ExecutiveMember::where('active', true)->get();
 
-        return view('index', compact('eventCount', 'userCount','prominentalumni'));
+        return view('index', compact('eventCount', 'userCount', 'prominentalumni', 'executiveMembers'));
     }
 
     public function about()

@@ -28,13 +28,18 @@
             <label>Role Name</label>
             <input type="text" name="role_name" class="form-control" required>
         </div>
+        <div class="form-group mt-2">
+            <label>Role Description</label>
+            <input type="text" name="role_desc" class="form-control">
+        </div>
         <button type="submit" class="btn btn-primary mt-2">Add Role</button>
     </form>
     <h4 class="mt-4">All Roles</h4>
     <ul class="list-group mt-3">
         @foreach($roles as $role)
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span>{{ $role->role_name }}</span>
+                <span>{{ \Illuminate\Support\Str::title($role->role_name) }}</span>
+                <span>{{ $role->role_desc }}</span>
                 <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editRoleModal{{ $role->id }}">Edit</button>
             </li>
             <!-- Edit Modal -->
@@ -51,8 +56,15 @@
                             <div class="modal-body">
                                 <div class="form-group mb-3">
                                     <label>Role Name</label>
-                                    <input type="text" name="role_name" class="form-control @error('role_name') is-invalid @enderror" value="{{ old('role_name', $role->role_name) }}" required>
+                                    <input type="text" name="role_name" class="form-control @error('role_name') is-invalid @enderror" value="{{ old('role_name', ($role->role_name)) }}" required>
                                     @error('role_name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>Role Description</label>
+                                    <input type="text" name="role_desc" class="form-control @error('role_desc') is-invalid @enderror" value="{{ old('role_desc', $role->role_desc) }}">
+                                    @error('role_desc')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

@@ -30,14 +30,14 @@
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->role ? $user->role->role_name : 'N/A' }}</td>
+                    <td>{{ $user->role ? ($user->role->role_desc) : 'N/A' }}</td>
                     <td>
                         <form action="{{ route('admin.users.updateRole', $user->id) }}" method="POST" class="d-flex align-items-center">
                             @csrf
                             @method('PUT')
                             <select name="role_id" class="form-select form-select-sm me-2" required>
                                 @foreach($roles as $role)
-                                    <option value="{{ $role->id }}" @if($user->role_id == $role->id) selected @endif>{{ $role->role_name }}</option>
+                                    <option value="{{ $role->id }}" @if($user->role_id == $role->id) selected @endif>{{($role->role_desc) }}</option>
                                 @endforeach
                             </select>
                             <button type="submit" class="btn btn-primary btn-sm">Update</button>

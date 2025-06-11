@@ -14,6 +14,7 @@ class Role extends Model
 
     protected $fillable = [
         'role_name',        // e.g., 'admin', 'student', 'teacher'
+        'role_desc',       // e.g., 'Administrator with full access', 'Student with limited access'
     ];
 
     /**

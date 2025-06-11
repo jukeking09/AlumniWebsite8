@@ -8,8 +8,8 @@
         <a href="{{ route('admin.departments.index') }}" class="list-group-item list-group-item-action">Manage Departments</a>
         <a href="{{ route('admin.roles.index') }}" class="list-group-item list-group-item-action">Manage Roles</a>
         <a href="{{ route('admin.users.index') }}" class="list-group-item list-group-item-action">Manage Users</a>
-        <a href="{{ route('admin.prominent_alumni.create') }}" class="list-group-item list-group-item-action">Add Prominent Alumni</a>
-        <a href="{{ route('admin.executive_members.index') }}" class="list-group-item list-group-item-action">Add Executive Members</a>
+        <a href="{{ route('admin.prominent_alumni.create') }}" class="list-group-item list-group-item-action">Manage Prominent Alumni</a>
+        <a href="{{ route('admin.executive_members.index') }}" class="list-group-item list-group-item-action">Manage Executive Members</a>
     </div>
 </div>
 <style>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+class CreateUsersTable extends Migration {
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->string('address');
             $table->string('designation');
             $table->string('profile_picture')->nullable(); // Path to uploaded image
-            $table->text('research_areas')->nullable();
+            $table->text('area_of_interest')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

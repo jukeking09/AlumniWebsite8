@@ -113,9 +113,9 @@
                         </div>
                         <!-- Research Areas -->
                         <div class="mb-3">
-                            <label for="research_areas" class="form-label">Areas of Interest</label>
-                            <textarea class="form-control @error('research_areas') is-invalid @enderror" id="research_areas" name="research_areas" rows="3">{{ old('research_areas', $user->research_areas ?? '') }}</textarea>
-                            @error('research_areas') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                            <label for="area_of_interest" class="form-label">Areas of Interest</label>
+                            <textarea class="form-control @error('area_of_interest') is-invalid @enderror" id="area_of_interest" name="area_of_interest" rows="3">{{ old('area_of_interest', $user->area_of_interest ?? '') }}</textarea>
+                            @error('area_of_interest') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                         <div class="text-end">
                             <button type="submit" class="btn btn-success">Update Profile</button>

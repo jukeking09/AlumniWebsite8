@@ -113,7 +113,7 @@
                 <!-- First Sticky Div -->
                 <div class="card shadow-lg mb-4">
                     <div class="card-header bg-primary text-white text-center">
-                        <h5 class="text-white">Members</h5><i class="bi bi-person mt-1"></i><i class="bi bi-person mt-1"></i><i class="bi bi-person mt-1"></i>
+                        <h5 class="text-white">Members</h5><i class="bi bi-people-fill mt-1"></i><i class="bi bi-people-fill mt-1"></i>
                     </div>
                     <div class="card-body bg-primary">
                        <span class="h4 text-white">{{ $userCount }}</span>
@@ -158,7 +158,7 @@
                 <!-- First Sticky Div -->
                 <div class="card shadow-lg mb-4">
                     <div class="card-header bg-primary text-white text-center">
-                        <h5 class="text-white">Members</h5><i class="bi bi-person mt-1"></i><i class="bi bi-person mt-1"></i><i class="bi bi-person mt-1"></i>
+                        <h5 class="text-white">Members</h5><i class="bi bi-people-fill mt-1"></i><i class="bi bi-people-fill mt-1"></i>
                     </div>
                     <div class="card-body bg-primary">
                        <span class="h4 text-white">{{ $userCount }}</span>

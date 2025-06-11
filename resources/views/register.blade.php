@@ -251,8 +251,8 @@
 
                 <!-- Research Areas -->
                 <div class="mb-3">
-                    <label for="research_areas" class="form-label">Areas of Interest<span class="text-danger">*</span></label>
-                    <textarea class="form-control" id="research_areas" name="research_areas" rows="3" required></textarea>
+                    <label for="area_of_interest" class="form-label">Areas of Interest<span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="area_of_interest" name="area_of_interest" rows="3" required></textarea>
                 </div>
 
                 <!-- Submit Button -->

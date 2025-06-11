@@ -91,7 +91,7 @@ class LoginController extends Controller
             'department_id' => 'required|exists:departments,id',
             'address' => 'required|string|max:255',
             'designation' => 'required|string|max:255',
-            'research_areas' => 'nullable|string|max:1000',
+            'area_of_interest' => 'nullable|string|max:1000',
             'photo' => 'required|mimes:jpeg,jpg,png,webp,gif|max:2048',
         ]);
         //return error messages if validation fails
@@ -118,7 +118,7 @@ class LoginController extends Controller
         $user->department_id = $request->input('department_id');
         $user->address = $request->input('address');
         $user->designation = $request->input('designation');
-        $user->research_areas = $request->input('research_areas');
+        $user->area_of_interest = $request->input('area_of_interest');
         $user->profile_picture = $photoPath;
         $user->password = Hash::make($request->input('password'));
         $user->role_id = 2;

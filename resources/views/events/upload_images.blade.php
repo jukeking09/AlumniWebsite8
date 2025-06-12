@@ -26,7 +26,7 @@
                         <div class="mb-3">
                             <label for="event_images" class="form-label">Select Images</label>
                             <input type="file" name="event_images[]" id="event_images" class="form-control @error('event_images') is-invalid @enderror" multiple accept="image/*" required onchange="checkFileCount(this)">
-                            <div class="form-text text-muted">Accepted types: JPG, JPEG, PNG, GIF, WEBP. Max size: 2MB per image. You can select up to 5 files.</div>
+                            <div class="form-text text-muted">Accepted types: JPG, JPEG, PNG, GIF, WEBP. Max size: 2MB per image. You can select up to 5 files. No Underscores in filename</div>
                             @error('event_images')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

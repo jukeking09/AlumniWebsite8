@@ -171,7 +171,9 @@
                         <select class="form-select @error('country_code_id') is-invalid @enderror" name="country_code_id" id="country_code_id" required>
                             <option value="">Select Code</option>
                             @foreach ($countryCodes as $id => $code)
-                                <option value="{{ $id }}" {{ old('country_code_id') == $id ? 'selected' : '' }}>{{ $code }}</option>
+                                <option value="{{ $id }}" {{ old('country_code_id') == $id ? 'selected' : '' }}>
+                                    {{ $code }}
+                                </option>
                             @endforeach
                         </select>
                         @error('country_code_id') <div class="invalid-feedback">{{ $message }}</div> @enderror

@@ -29,7 +29,7 @@ class User extends Authenticatable
         'address',
         'designation',
         'profile_picture',
-        'research_areas',
+        'area_of_interest',
         'email',
         'password',
         'custom_id',

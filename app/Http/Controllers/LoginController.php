@@ -60,7 +60,10 @@ class LoginController extends Controller
     public function register()
     {
         $titles = DB::table('titles')->orderBy('title')->pluck('title', 'id');
-        $countryCodes = DB::table('country_codes')->orderBy('code')->pluck('code', 'id');
+        $countryCodes = DB::table('country_codes')
+            ->orderBy('code')
+            ->selectRaw("id, CONCAT(code, ' - ', country_name) AS full_label")
+            ->pluck('full_label', 'id');
         $courses = DB::table('courses')->orderBy('course_name')->pluck('course_name', 'id');
         $departments = DB::table('departments')->orderBy('department_name')->pluck('department_name', 'id');
         return view('register', compact('titles', 'countryCodes', 'courses', 'departments'));

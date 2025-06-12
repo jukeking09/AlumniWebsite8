@@ -60,7 +60,7 @@ class MemberController extends Controller
             'title_id' => 'nullable|exists:titles,id',
             'country_code_id' => 'nullable|exists:country_codes,id',
             'area_of_interest' => 'nullable|string|max:255',
-            'year_of_passing' => 'nullable|integer|min:1900|max:' . date('Y'),
+            'year_of_passing' => 'nullable|integer|min:1934|max:' . date('Y'),
         ]);
 
         $year = $user->year_of_passing;

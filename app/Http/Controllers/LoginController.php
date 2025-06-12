@@ -170,8 +170,35 @@ class LoginController extends Controller
                 // Email content
                 $mail->isHTML(true);
                 $mail->Subject = 'SACSAA Registration';
-                $mail->Body    = "<h1>Dear $toName!</h1><p>Your registration for SACSAA was successful!</p><p>Please Find Your SACSAA ID Card Attached Below.</p>";
-                $mail->AltBody = "Welcome, $toName! Your registration for SACSAA was successful!";
+                //$mail->Body    = "<h1>Dear $toName!</h1><p>Your registration for SACSAA was successful!</p><p>Please Find Your SACSAA ID Card Attached Below.</p>";
+                //$mail->AltBody = "Welcome, $toName! Your registration for SACSAA was successful! Please Find Your SACSAA ID Card Attached Below.";
+                
+                // Embed the image in the email
+                $mail->addEmbeddedImage('./img/SignaturePRES.png', 'signature');
+
+                // Use the embedded image in the HTML content
+                $mail->Body = "
+                    <h1>Dear $toName!</h1>
+                    <p>Your registration for SACSAA was successful!</p>
+                    <p>Please find your SACSAA ID card attached below.</p>
+                    <br>
+                    <p>Yours truly,</p>
+                    <p>President,</p>
+                    <p>SACSAA</p>
+                    <img src='cid:signature' alt='President Signature' style='width:100px; height:auto;'>
+                ";
+
+                $mail->AltBody = "
+                    Dear $toName!
+                    
+                    Your registration for SACSAA was successful!
+                    Please find your SACSAA ID card attached below.
+                    
+                    Yours truly,
+                    President,
+                    SACSAA
+                ";
+                
                 $mail->addStringAttachment($pdfContent, 'IDCard.pdf', 'base64', 'application/pdf');
 
                 // Send email

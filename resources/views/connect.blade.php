@@ -47,36 +47,44 @@
                         </div>
                     </div>
                     <div class="col-lg-6 mb-n5 wow fadeIn" data-wow-delay="0.4s">
-                        <div class="bg-white p-5">
-                            <h2 class="text-uppercase mb-4">Contact Us</h2>
+                        @if(session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+                        @if(session('error'))
+                            <div class="alert alert-danger">{{ session('error') }}</div>
+                        @endif
+                    <div class="bg-white p-5">
+                        <h2 class="text-uppercase mb-4">Contact Us</h2>
+                        <form action="{{ route('contact.submit') }}" method="POST">
+                            @csrf
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0 bg-light" id="name" placeholder="Your Name">
+                                        <input type="text" class="form-control border-0 bg-light" id="name" name="name" placeholder="Your Name" required>
                                         <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control border-0 bg-light" id="mail" placeholder="Your Email">
-                                        <label for="mail">Your Email</label>
+                                        <input type="email" class="form-control border-0 bg-light" id="email" name="email" placeholder="Your Email" required>
+                                        <label for="email">Your Email</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0 bg-light" id="mobile" placeholder="Your Mobile">
+                                        <input type="text" class="form-control border-0 bg-light" id="mobile" name="mobile" placeholder="Your Mobile" required pattern="\d{10}" maxlength="10">
                                         <label for="mobile">Your Mobile</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0 bg-light" id="subject" placeholder="Subject">
+                                        <input type="text" class="form-control border-0 bg-light" id="subject" name="subject" placeholder="Subject" required>
                                         <label for="subject">Subject</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control border-0 bg-light" placeholder="Leave a message here" id="message" style="height: 130px"></textarea>
+                                        <textarea class="form-control border-0 bg-light" placeholder="Leave a message here" id="message" name="message" style="height: 130px" required></textarea>
                                         <label for="message">Message</label>
                                     </div>
                                 </div>
@@ -84,8 +92,9 @@
                                     <button class="btn btn-primary w-100 py-3" type="submit">Submit Now</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

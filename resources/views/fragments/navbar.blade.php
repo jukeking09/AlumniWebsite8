@@ -45,8 +45,8 @@
                                 <a href="{{ route('profile.edit') }}" class="dropdown-item">Edit Profile</a>
                                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                     @csrf
-                                    <button type="submit" class="dropdown-item btn" style="width: 100%; text-decoration: none;">
-                                        <span>Logout</span>
+                                    <button type="submit" class="dropdown-item btn" id="logout-btn"style="width: 100%; text-decoration: none; font-weight:400;text-transform: capitalize;">
+                                        <span class>Logout</span>
                                     </button>
                                 </form>
                             </div>

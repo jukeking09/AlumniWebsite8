@@ -36,9 +36,9 @@
 </head>
 <body>
     @include('imports.headimport')
+    @include('fragments.navbar')
     {{-- @include('fragments.spinner')
-    @include('fragments.topbar')
-    @include('fragments.navbar') --}}
+     @include('fragments.topbar') --}}
     <div class="container mt-5">
         <h1 class="text-center mb-4">My Publications</h1>
 
@@ -68,6 +68,7 @@
             </div>
         @endif
     </div>
+    @include('fragments.footer')
+    @include('imports.footimport')
 </body>
-
 </html>

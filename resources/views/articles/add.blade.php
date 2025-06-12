@@ -21,14 +21,19 @@
         .shadow {
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
     </style>
 </head>
 <body>
     @include('imports.headimport')
+    @include('fragments.navbar')
     {{-- @include('fragments.spinner')
     @include('fragments.topbar')
     @include('fragments.navbar') --}}
-    <div class="container mt-5">
+    <div class="form-container mt-5">
         <h1 class="mb-4 text-center">Add Publications</h1>
         <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data" class="shadow p-4 rounded bg-white">
             @csrf
@@ -97,5 +102,7 @@
             </div>
         </form>
     </div>
+    @include('fragments.footer')
+    @include('imports.footimport')
 </body>
 </html>

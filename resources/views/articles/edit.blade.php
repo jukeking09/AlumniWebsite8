@@ -25,14 +25,18 @@
         small.text-muted {
             font-size: 0.85rem;
         }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
     </style>
 </head>
 <body>
     @include('imports.headimport')
+    @include('fragments.navbar')
     {{-- @include('fragments.spinner')
-    @include('fragments.topbar')
-    @include('fragments.navbar') --}}
-    <div class="container mt-5">
+    @include('fragments.topbar') --}}
+    <div class="form-container mt-5">
         <h1 class="mb-4 text-center">Update Publication</h1>
         <form action="{{ route('articles.update', $article->id) }}" method="POST" enctype="multipart/form-data" class="shadow p-4 rounded bg-white">
             @csrf
@@ -101,5 +105,7 @@
             </div>
         </form>
     </div>
+    @include('fragments.footer')
+    @include('imports.footimport')
 </body>
 </html>

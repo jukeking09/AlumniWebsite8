@@ -11,6 +11,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IDCardController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ContactController;
 
 
 //Route For HomeController
@@ -138,3 +139,8 @@ Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequest
 Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email')->middleware('guest');
 Route::get('/password/reset/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset')->middleware('guest');
 Route::post('/password/reset', [ForgotPasswordController::class, 'reset'])->name('password.update')->middleware('guest');
+
+
+//Route for Contact Us
+Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
+

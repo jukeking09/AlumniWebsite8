@@ -50,7 +50,7 @@ class IDCardController extends Controller
 
     // Load the HTML and configure DOMPDF options
     $pdf = Pdf::loadHTML($id)
-              ->setPaper('A4', 'portrait')
+              ->setPaper('A5', 'portrait')
               ->setOption('isHtml5ParserEnabled', true)
               ->setOption('defaultMediaType', 'screen')
               ->setOption('isPhpEnabled', true);

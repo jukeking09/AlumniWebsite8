@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A4 Quadrant Layout</title>
+    <title>ID Card</title>
     <style>
         @page {
             size: A3;
@@ -271,7 +271,7 @@
     <tr>
         <!-- Second Heading -->
         <td style="text-align: center; padding: 0; margin: 0;width: 15%;">
-            <h5 style="margin: 0; padding-top: 5px;">(Affiliated to the Association of the Past Pupils of Don Bosco)</h5>
+            <h6 style="margin: 0; padding-top: 5px;">(Affiliated to the Association of the Past Pupils of Don Bosco)</h6>
         </td>
     </tr>
     <tr>
@@ -352,10 +352,9 @@
               <section>
                 <br><br><br><br><br><br><br><br>
                 <h5>Address:{{$user->address}}</h5>
-                {{-- <h5>Address:dasdasdasdasdasd</h5>
-                <h5>Address:dasdasdasdasdasd</h5>
-                <h5>Address:dasdasdasdasdasd</h5>
-                <h5>Address:dasdasdasdasdasd</h5> --}}
+                <h5>Current Designation:{{$user->designation}}</h5>
+                <br>
+                <h6>www.alumni.anthonys.ac.in</h6>
               </section>
             </div>
         </div>

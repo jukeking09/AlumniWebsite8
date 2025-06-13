@@ -84,7 +84,24 @@
             </p>
 
             <div class="executive-container">
-                @foreach($executiveMembers as $member)
+                @foreach(
+                    $executiveMembers->sortBy(function($member) {
+                        $order = [
+                            'President' => 1,
+                            'Vice President' => 2,
+                            'Secretary' => 3,
+                            'Treasurer' => 4,
+                            'Executive Member' => 5,
+                            'Delegate' => 6
+                        ];
+
+                        foreach ($order as $key => $val) {
+                            if (stripos($member->post, $key) !== false) {
+                                return $val;
+                            }
+                        }
+                        return 99;
+                    }) as $member)
                     <div class="executive-card">
                         <img src="{{ route('executive.image', basename($member->picture)) }}" alt="{{ $member->name }}">
                         <p class="name">{{ $member->name }}</p>

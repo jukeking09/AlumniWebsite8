@@ -13,6 +13,12 @@
     const passwordError = document.getElementById("passwordError");
     const passwordMismatch = document.getElementById("passwordMismatch");
 
+    // alert(passwordField);
+    // alert(confirmPasswordField);
+    // alert(form);
+    // alert(passwordError);
+    // alert(passwordMismatch);
+
     // Enable Confirm Password Field When Password is Entered
     passwordField.addEventListener("input", () => {
         if (passwordField.value.length > 0) {
@@ -166,9 +172,7 @@
                             <option value="">Select Code</option>
                             @foreach ($countryCodes as $id => $code)
                                 <option value="{{ $id }}" 
-                                    {{ (old('country_code_id') == $id) || (!old('country_code_id') && $id == '1') ? 'selected' : '' }}>
-                                    {{ $code }}
-                                </option>
+                                    {{ (old('country_code_id') == $id) || (!old('country_code_id') && $id == '60') ? 'selected' : '' }}>{{ $code }}</option>
                             @endforeach
                         </select>
                         @error('country_code_id') <div class="invalid-feedback">{{ $message }}</div> @enderror

@@ -13,7 +13,7 @@
                 <div class="navbar-nav">
                     <a href="{{ route('home') }}" class="h5 nav-item nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home</a>
                     {{-- <a href="{{ route('about') }}" class="nav-item nav-link {{Route::currentRouteName() == 'about' ? 'active' : ''}}">About</a> --}}
-                    <a href="#about" class="h5 nav-item nav-link" id="link-about">About</a>
+                    <a href="{{ route('home') }}#about" class="h5 nav-item nav-link">About</a>
                    
                     <a href="{{ route('constitution') }}" class="h5 nav-item nav-link {{ Route::currentRouteName() == 'constitution' ? 'active' : '' }}">Constitution</a>
                     <a href="{{ route('executivebody') }}" class="h5 nav-item nav-link {{ Route::currentRouteName() == 'executivebody' ? 'active' : '' }}">Executive Body</a>
@@ -34,15 +34,16 @@
                                 @if(auth()->check() && auth()->user()->role->role_name === 'member')
                                     <a href="{{ route('member.dashboard') }}" class="dropdown-item">Dashboard</a>
                                      <a href="{{ route('generateIdCard', ['id' => auth()->user()->id]) }}" class="dropdown-item">Generate ID Card</a>
+                                     <a href="{{ route('profile.edit') }}" class="dropdown-item">Edit Profile</a>
                                 @endif
                                 @if(auth()->check() && auth()->user()->role->role_name === 'user')
                                     <a href="{{ route('users-dashboard') }}" class="dropdown-item">Dashboard</a>
                                     <a href="{{ route('generateIdCard', ['id' => auth()->user()->id]) }}" class="dropdown-item">Generate ID Card</a>
+                                    <a href="{{ route('profile.edit') }}" class="dropdown-item">Edit Profile</a>
                                 @endif
                                 @if(auth()->check() && auth()->user()->role->role_name === 'admin')
                                     <a href="{{ route('admin.dashboard') }}" class="dropdown-item">Dashboard</a>
                                 @endif
-                                <a href="{{ route('profile.edit') }}" class="dropdown-item">Edit Profile</a>
                                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                     @csrf
                                     <button type="submit" class="dropdown-item btn" id="logout-btn"style="width: 100%; text-decoration: none; font-weight:400;text-transform: capitalize;">

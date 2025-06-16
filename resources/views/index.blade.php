@@ -220,7 +220,7 @@
 
         <div class="container my-5">
             <h2 class="text-center">Motto<br></h2>
-            <h3 class="anthonysbluetext text-center">MAKING A DIFFERENCE</h3>
+            <h3 class="anthonysbluetext text-center">MAKE A DIFFERENCE</h3>
         </div>
 
         <div class="container my-5">
@@ -320,7 +320,7 @@
 const scrollContainer = document.getElementById("scrollContainer");
 
 let scrollAmount = 0;
-let scrollStep = 0.2; // Default speed of scrolling
+let scrollStep = 1.5; // Default speed of scrolling
 let scrollDelay = 20; // Delay in milliseconds
 let isHovered = false;
 
@@ -353,7 +353,7 @@ scrollContainer.addEventListener("mouseenter", () => {
 
 scrollContainer.addEventListener("mouseleave", () => {
   isHovered = false;
-  scrollStep = 0.2; // Reset speed on mouse leave
+  scrollStep = 1.5; // Reset speed on mouse leave
 });
 
 // Start the scrolling

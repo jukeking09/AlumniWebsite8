@@ -64,8 +64,17 @@ class LoginController extends Controller
             ->orderBy('code')
             ->selectRaw("id, CONCAT(code, ' - ', country_name) AS full_label")
             ->pluck('full_label', 'id');
-        $courses = DB::table('courses')->orderBy('course_name')->pluck('course_name', 'id');
-        $departments = DB::table('departments')->orderBy('department_name')->pluck('department_name', 'id');
+        // Move 'Other' course to the bottom
+        $courses = DB::table('courses')
+            ->select('id', 'course_name')
+            ->orderByRaw("CASE WHEN LOWER(course_name) = 'other' THEN 1 ELSE 0 END, course_name")
+            ->pluck('course_name', 'id');
+
+        // Move 'Other' department to the bottom
+        $departments = DB::table('departments')
+            ->select('id', 'department_name')
+            ->orderByRaw("CASE WHEN LOWER(department_name) = 'other' THEN 1 ELSE 0 END, department_name")
+            ->pluck('department_name', 'id');
         return view('register', compact('titles', 'countryCodes', 'courses', 'departments'));
     }
 
@@ -95,7 +104,7 @@ class LoginController extends Controller
             'address' => 'required|string|max:255',
             'designation' => 'required|string|max:255',
             'area_of_interest' => 'nullable|string|max:1000',
-            'photo' => 'required|mimes:jpeg,jpg,png,webp,gif|max:2048',
+            'photo' => 'required|mimes:jpeg,jpg,png,webp,gif|max:3072',
         ]);
         //return error messages if validation fails
          if(validator($request->all())->fails()){

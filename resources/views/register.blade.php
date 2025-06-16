@@ -194,6 +194,7 @@
                             @for ($year = date('Y'); $year >= 1934; $year--)
                                 <option value="{{ $year }}" {{ old('year_of_passing') == $year ? 'selected' : '' }}>{{ $year }}</option>
                             @endfor
+                            <option value="{{ date('Y') }}" {{ old('year_of_passing') == date('Y') ? 'selected' : '' }}>Other</option>
                         </select>
                         @error('year_of_passing') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
@@ -204,7 +205,6 @@
                             @foreach ($courses as $id => $name)
                                 <option value="{{ $id }}" {{ old('course_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
                             @endforeach
-                            <option value="Other">Other</option>
                         </select>
                         @error('course_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
@@ -244,7 +244,7 @@
 
                     <!-- Photo -->
                     <div class="mb-3 col-md-3">
-                        <label for="photo" class="form-label">Upload Photo<span class="text-danger">*</span> <span class="fw-bold">(Max Size : 2mb)</span></label>
+                        <label for="photo" class="form-label">Upload Photo<span class="text-danger">*</span> <span class="fw-bold">(Max Size : 3MB)</span></label>
                         <input type="file" class="form-control @error('photo') is-invalid @enderror" id="photo" name="photo" accept=".jpg,.jpeg,.png,.webp" required>
                         @error('photo') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
@@ -252,7 +252,7 @@
 
                 <!-- Research Areas -->
                 <div class="mb-3">
-                    <label for="area_of_interest" class="form-label">Areas of Interest<span class="text-danger">*</span></label>
+                    <label for="area_of_interest" class="form-label">Areas of Interest/Occupation/Current Work/Research<span class="text-danger">*</span></label>
                     <textarea class="form-control" id="area_of_interest" name="area_of_interest" rows="3" required></textarea>
                 </div>
 

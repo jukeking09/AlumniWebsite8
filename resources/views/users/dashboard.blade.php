@@ -61,18 +61,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Articles Section -->
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-lg">
-                <div class="card-body py-5">
-                    <h5 class="card-title">Manage Publications</h5>
-                    <p class="card-text text-muted">Add or edit your Publications.</p>
-                    <a href="{{ route('articles.create') }}" class="btn btn-primary mb-2 w-100">Add Publications</a>
-                    <a href="{{ route('articles.myArticles') }}" class="btn btn-secondary w-100">View My Publications</a>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
     @include('imports.footimport')

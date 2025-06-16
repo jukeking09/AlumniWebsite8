@@ -354,7 +354,8 @@
                 <h5>Address:{{$user->address}}</h5>
                 <h5>Current Designation:{{$user->designation}}</h5>
                 <br>
-                <h6>www.alumni.anthonys.ac.in</h6>
+                <img src="./img/frame.png" style="width: 60px;" alt="QR Code">
+                <h6>https://alumni.anthonys.ac.in</h6>
               </section>
             </div>
         </div>

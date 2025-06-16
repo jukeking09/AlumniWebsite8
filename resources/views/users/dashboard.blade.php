@@ -49,16 +49,15 @@
         {{-- <p>Your email: <span class="font-weight-bold">{{ auth()->user()->email }}</span></p> --}}
     </div>
 
-    <div class="row text-center mt-5">
-        <!-- Jobs Section -->
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-lg">
-                <div class="card-body py-5">
-                    <h5 class="card-title">Manage Opportunities</h5>
-                    <p class="card-text text-muted">Create or manage your Opportunity listings..</p>
-                    <a href="{{ route('jobs.create') }}" class="btn btn-primary mb-2 w-100">Add Opportunities</a>
-                    <a href="{{ route('jobs.myJobs') }}" class="btn btn-secondary w-100">View My Posted Opportunities</a>
-                </div>
+    <div class="row justify-content-center text-center mt-5">
+    <!-- Jobs Section -->
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-lg">
+            <div class="card-body py-5">
+                <h5 class="card-title">Manage Opportunities</h5>
+                <p class="card-text text-muted">Create or manage your Opportunity listings..</p>
+                <a href="{{ route('jobs.create') }}" class="btn btn-primary mb-2 w-100">Add Opportunities</a>
+                <a href="{{ route('jobs.myJobs') }}" class="btn btn-secondary w-100">View My Posted Opportunities</a>
             </div>
         </div>
     </div>

@@ -32,7 +32,7 @@
 
     // Validate Password Strength
     function isPasswordStrong(password) {
-        const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+        const specialCharRegex = /[!@#$%^&*(),.?":{}|<>+-_=]/;
         return password.length >= 8 && specialCharRegex.test(password);
     }
 

@@ -191,10 +191,10 @@
                         <label for="year_of_passing" class="form-label">Passing Out Year<span class="text-danger">*</span></label>
                         <select class="form-select @error('year_of_passing') is-invalid @enderror" id="year_of_passing" name="year_of_passing" required>
                             <option value="">Select Year</option>
+                            <option value="{{ date('Y') }}" {{ old('year_of_passing') == date('Y') ? 'selected' : '' }}>Staff</option>
                             @for ($year = date('Y'); $year >= 1934; $year--)
                                 <option value="{{ $year }}" {{ old('year_of_passing') == $year ? 'selected' : '' }}>{{ $year }}</option>
                             @endfor
-                            <option value="{{ date('Y') }}" {{ old('year_of_passing') == date('Y') ? 'selected' : '' }}>Other</option>
                         </select>
                         @error('year_of_passing') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>

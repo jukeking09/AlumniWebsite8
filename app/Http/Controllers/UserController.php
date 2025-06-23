@@ -84,5 +84,33 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Password changed successfully.');
     }
+    
+    public function search(Request $request)
+    {
+        $query = User::query();
+
+        if ($request->filled('name')) {
+            $query->where(function($q) use ($request) {
+                $q->where('first_name', 'like', '%' . $request->name . '%')
+                ->orWhere('last_name', 'like', '%' . $request->name . '%');
+            });
+        }
+
+        if ($request->filled('department_id')) {
+            $query->where('department_id', $request->department_id);
+        }
+
+        if ($request->filled('year')) {
+            $query->where('year_of_passing', $request->year);
+        }
+
+        if ($request->filled('interest')) {
+            $query->where('area_of_interest', 'like', '%' . $request->interest . '%');
+        }
+
+        $users = $query->with(['department'])->paginate(10); // eager load for display
+
+        return view('users.search', compact('users'));
+    }
 
 }

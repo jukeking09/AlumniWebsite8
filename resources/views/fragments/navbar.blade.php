@@ -26,7 +26,7 @@
                         <a href="{{ route('login') }}" class="h5 nav-item nav-link {{ Route::currentRouteName() == 'login' ? 'active' : '' }}">Login</a>
                         {{-- <a href="{{ route('register') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'register' ? 'active' : '' }}">Join</a> --}}
                     @endguest
-                     @auth
+                    @auth
                         <div class="nav-item dropdown">
                             <a href="#" class="h5 nav-link dropdown-toggle {{ in_array(Route::currentRouteName(), ['dashboard', 'profile']) ? 'active' : '' }}" data-bs-toggle="dropdown">Profile</a>
                             <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
@@ -52,6 +52,29 @@
                                 </form>
                             </div>
                         </div>
+                    @endauth
+                    @auth
+                    <form action="{{ route('users.search') }}" method="GET" class="d-flex flex-wrap align-items-center ms-lg-3 mt-2 mt-lg-0 gap-2">
+                        <input type="text" name="name" class="form-control" placeholder="Name" style="width: 150px;">
+
+                        <select name="department_id" class="form-select" style="width: 150px;">
+                            <option value="">All Departments</option>
+                            @foreach($departments as $dept)
+                                <option value="{{ $dept->id }}">{{ $dept->department_name }}</option>
+                            @endforeach
+                        </select>
+
+                        <select name="year" class="form-select" style="width: 130px;">
+                            <option value="">All Years</option>
+                            @for($y = now()->year; $y >= 1980; $y--)
+                                <option value="{{ $y }}">{{ $y }}</option>
+                            @endfor
+                        </select>
+
+                        <input type="text" name="interest" class="form-control" placeholder="Area of Interest" style="width: 160px;">
+
+                        <button type="submit" class="btn btn-outline-primary">Search</button>
+                    </form>
                     @endauth
                 </div>
             </div>

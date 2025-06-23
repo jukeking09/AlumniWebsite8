@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\User;
 use App\Models\ProminentAlumnus;
 use App\Models\ExecutiveMember;
+use App\Models\Department;
 
 class HomeController extends Controller
 {
@@ -16,8 +17,9 @@ class HomeController extends Controller
         $userCount = User::count();   // Get the total count of users
         $prominentalumni = ProminentAlumnus::all();
         $executiveMembers = ExecutiveMember::where('active', true)->get();
+        $departments = Department::all();
 
-        return view('index', compact('eventCount', 'userCount', 'prominentalumni', 'executiveMembers'));
+        return view('index', compact('eventCount', 'userCount', 'prominentalumni', 'executiveMembers', 'departments'));
     }
 
     public function about()

@@ -107,6 +107,11 @@ class UserController extends Controller
         if ($request->filled('interest')) {
             $query->where('area_of_interest', 'like', '%' . $request->interest . '%');
         }
+        
+        // Exclude admin users
+        $query->whereHas('role', function($q) {
+            $q->where('role_name', '!=', 'admin');
+        });
 
         $users = $query->with(['department'])->paginate(10); // eager load for display
 

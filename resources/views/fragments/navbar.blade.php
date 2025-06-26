@@ -54,28 +54,65 @@
                         </div>
                     @endauth
                     @auth
-                    <form action="{{ route('users.search') }}" method="GET" class="d-flex flex-wrap align-items-center ms-lg-3 mt-2 mt-lg-0 gap-2">
-                        <input type="text" name="name" class="form-control" placeholder="Name" style="width: 150px;">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="h5 nav-link dropdown-toggle" id="searchDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-search"></i> Search Alumni
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end p-3" style="min-width: 320px; max-width: 400px;" data-bs-auto-close="outside">
+                            <form action="{{ route('users.search') }}" method="GET" class="d-flex flex-column gap-2">
+                                <input type="text" name="name" class="form-control" placeholder="Name">
 
-                        <select name="department_id" class="form-select" style="width: 150px;">
-                            <option value="">All Departments</option>
-                            @foreach($departments as $dept)
-                                <option value="{{ $dept->id }}">{{ $dept->department_name }}</option>
-                            @endforeach
-                        </select>
+                                <select name="department_id" class="form-select">
+                                    <option value="">All Departments</option>
+                                    @foreach($departments as $dept)
+                                        <option value="{{ $dept->id }}">{{ $dept->department_name }}</option>
+                                    @endforeach
+                                </select>
 
-                        <select name="year" class="form-select" style="width: 130px;">
-                            <option value="">All Years</option>
-                            @for($y = now()->year; $y >= 1980; $y--)
-                                <option value="{{ $y }}">{{ $y }}</option>
-                            @endfor
-                        </select>
+                                <select name="year" class="form-select">
+                                    <option value="">All Years</option>
+                                    @for($y = now()->year; $y >= 1934; $y--)
+                                        <option value="{{ $y }}">{{ $y }}</option>
+                                    @endfor
+                                </select>
 
-                        <input type="text" name="interest" class="form-control" placeholder="Area of Interest" style="width: 160px;">
+                                <input type="text" name="interest" class="form-control" placeholder="Area of Interest">
 
-                        <button type="submit" class="btn btn-outline-primary">Search</button>
-                    </form>
+                                <button type="submit" class="btn btn-outline-primary w-100">Search</button>
+                            </form>
+                        </div>
+                    </div>
                     @endauth
+                    <style>
+                    /* Responsive dropdown for search */
+                    @media (max-width: 500px) {
+                        .search-dropdown-menu {
+                            min-width: 90vw !important;
+                            max-width: 98vw !important;
+                            left: 5px !important;
+                            right: 5px !important;
+                        }
+                    }
+                    </style>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            // Prevent dropdown from closing when clicking inside the form
+                            const dropdownForm = document.querySelector('#searchDropdown + .dropdown-menu form');
+
+                            if (dropdownForm) {
+                                dropdownForm.addEventListener('click', function (e) {
+                                    e.stopPropagation();
+                                });
+
+                                // Prevent closing when interacting with autocomplete suggestions
+                                dropdownForm.querySelectorAll('input, select').forEach((input) => {
+                                    input.addEventListener('keydown', (e) => {
+                                        e.stopPropagation();
+                                    });
+                                });
+                            }
+                        });
+                    </script>
                 </div>
             </div>
         </nav>

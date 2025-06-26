@@ -54,37 +54,12 @@
                         </div>
                     @endauth
                     @auth
-                    <div class="nav-item dropdown">
-                        <a href="#" class="h5 nav-link dropdown-toggle" id="searchDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-search"></i> Search Alumni
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end p-3" style="min-width: 320px; max-width: 400px;" data-bs-auto-close="outside">
-                            <form action="{{ route('users.search') }}" method="GET" class="d-flex flex-column gap-2">
-                                <input type="text" name="name" class="form-control" placeholder="Name">
-
-                                <select name="department_id" class="form-select">
-                                    <option value="">All Departments</option>
-                                    @foreach($departments as $dept)
-                                        <option value="{{ $dept->id }}">{{ $dept->department_name }}</option>
-                                    @endforeach
-                                </select>
-
-                                <select name="year" class="form-select">
-                                    <option value="">All Years</option>
-                                    @for($y = now()->year; $y >= 1934; $y--)
-                                        <option value="{{ $y }}">{{ $y }}</option>
-                                    @endfor
-                                </select>
-
-                                <input type="text" name="interest" class="form-control" placeholder="Area of Interest">
-
-                                <button type="submit" class="btn btn-outline-primary w-100">Search</button>
-                            </form>
-                        </div>
-                    </div>
+                   <button class="h5 nav-link btn btn-link" data-bs-toggle="modal" data-bs-target="#searchModal">
+                        <i class="bi bi-search"></i> Search Alumni
+                    </button>
                     @endauth
                     <style>
-                    /* Responsive dropdown for search */
+                    /* Responsive dropdown for search 
                     @media (max-width: 500px) {
                         .search-dropdown-menu {
                             min-width: 90vw !important;
@@ -92,9 +67,9 @@
                             left: 5px !important;
                             right: 5px !important;
                         }
-                    }
+                    }*/
                     </style>
-                    <script>
+                    {{-- <script>
                         document.addEventListener('DOMContentLoaded', function () {
                             // Prevent dropdown from closing when clicking inside the form
                             const dropdownForm = document.querySelector('#searchDropdown + .dropdown-menu form');
@@ -112,9 +87,42 @@
                                 });
                             }
                         });
-                    </script>
+                    </script> --}}
                 </div>
             </div>
         </nav>
+    </div>
+</div>
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Search Alumni</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('users.search') }}" method="GET" class="d-flex flex-column gap-3">
+                    <input type="text" name="name" class="form-control" placeholder="Name">
+
+                    <select name="department_id" class="form-select">
+                        <option value="">All Departments</option>
+                        @foreach($departments as $dept)
+                            <option value="{{ $dept->id }}">{{ $dept->department_name }}</option>
+                        @endforeach
+                    </select>
+
+                    <select name="year" class="form-select">
+                        <option value="">All Years</option>
+                        @for($y = now()->year; $y >= 1934; $y--)
+                            <option value="{{ $y }}">{{ $y }}</option>
+                        @endfor
+                    </select>
+
+                    <input type="text" name="interest" class="form-control" placeholder="Area of Interest">
+
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

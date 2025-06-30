@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $view->with('departments', Department::all());
+            $view->with('globaldepartments', Department::all());
         });
     }
 }

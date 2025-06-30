@@ -106,7 +106,7 @@
 
                     <select name="department_id" class="form-select">
                         <option value="">All Departments</option>
-                        @foreach($departments as $dept)
+                        @foreach($globaldepartments as $dept)
                             <option value="{{ $dept->id }}">{{ $dept->department_name }}</option>
                         @endforeach
                     </select>

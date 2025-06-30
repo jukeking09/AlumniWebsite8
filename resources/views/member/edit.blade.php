@@ -90,14 +90,10 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="department_id" class="form-label">Department</label>
-                                <select class="form-select @error('department_id') is-invalid @enderror" 
-                                        id="department_id" name="department_id" required>
+                                <select class="form-select @error('department_id') is-invalid @enderror" id="department_id" name="department_id" required>
                                     <option value="">Select Department</option>
-                                    @foreach ($departments as $dept)
-                                        <option value="{{ $dept->id }}" 
-                                            {{ ((int) old('department_id', $user->department_id) === (int) $dept->id) ? 'selected' : '' }}>
-                                            {{ $dept->department_name }}
-                                        </option>
+                                    @foreach ($departments as $id => $name)
+                                        <option value="{{ $id }}" {{ $user->department_id == $id ? 'selected' : '' }}>{{ $name }}</option>
                                     @endforeach
                                 </select>
                                 @error('department_id') <div class="invalid-feedback">{{ $message }}</div> @enderror

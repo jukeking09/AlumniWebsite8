@@ -9,6 +9,7 @@
     @include('imports.headimport')
     @include('fragments.topbar')
     @include('fragments.navbar')
+    @include('imports.footimport')
 </head>
 <body>
 <div class="container mt-5">

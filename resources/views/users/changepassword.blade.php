@@ -10,6 +10,7 @@
     @include('imports.headimport')
     @include('fragments.topbar')
     @include('fragments.navbar')
+    @include('imports.footimport')
         <div class="container mt-5 mb-5">
             <div class="card shadow-lg">
                 <div class="card-header bg-primary">

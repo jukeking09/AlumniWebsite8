@@ -37,9 +37,41 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <span class="text-muted">* Due to privacy concerns, Phone Numbers are not displayed.</span>
                 </div>
-                <div class="d-flex justify-content-center">
-                    {{ $users->links() }}
+                <div class="d-flex justify-content-center my-3">
+                    <nav aria-label="User pagination">
+                        <ul class="pagination pagination-sm mb-0">
+                            {{-- Previous Page Link --}}
+                            @if ($users->onFirstPage())
+                                <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                            @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $users->previousPageUrl() }}" rel="prev">&laquo;</a>
+                                </li>
+                            @endif
+
+                            {{-- Pagination Elements --}}
+                            @foreach ($users->getUrlRange(1, $users->lastPage()) as $page => $url)
+                                @if ($page == $users->currentPage())
+                                    <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                                @elseif ($page == 1 || $page == $users->lastPage() || abs($page - $users->currentPage()) <= 1)
+                                    <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                                @elseif ($page == $users->currentPage() - 2 || $page == $users->currentPage() + 2)
+                                    <li class="page-item disabled"><span class="page-link">…</span></li>
+                                @endif
+                            @endforeach
+
+                            {{-- Next Page Link --}}
+                            @if ($users->hasMorePages())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $users->nextPageUrl() }}" rel="next">&raquo;</a>
+                                </li>
+                            @else
+                                <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                            @endif
+                        </ul>
+                    </nav>
                 </div>
             @else
                 <p>No users found.</p>
@@ -59,5 +91,21 @@
             }
         }
     </style>
+    <style>
+    .pagination .page-link {
+        color: #0d6efd;
+        border-radius: 0.25rem;
+        transition: background 0.2s;
+    }
+    .pagination .page-item.active .page-link {
+        background: #0d6efd;
+        color: #fff;
+        border-color: #0d6efd;
+    }
+    .pagination .page-link:hover {
+        background: #e9ecef;
+        color: #0a58ca;
+    }
+</style>
 </body>
 </html>

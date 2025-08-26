@@ -1,4 +1,7 @@
 @include('imports.headimport')
+<head>
+    <title>SACSAA Home</title>
+</head>
 <style>
     #img-div{
         background-image: url('img/img_College.jpg'); 
